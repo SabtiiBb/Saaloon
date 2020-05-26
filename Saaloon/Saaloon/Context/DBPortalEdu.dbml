@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PortalEdu" Class="DBPortalEduDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=PortalEdu;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PortalEduConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="IdUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Usuario" Member="Usuario1" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="correo" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="contraseña" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="tipo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Usuario_Alumno" Member="Alumno" ThisKey="IdUsuario" OtherKey="idUsuario" Type="Alumno" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Alumno" Member="Alumno">
+    <Type Name="Alumno">
+      <Column Name="IdAlumno" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="fecha_n" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="genero" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Usuario_Alumno" Member="Usuario" ThisKey="idUsuario" OtherKey="IdUsuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cursos" Member="Cursos">
+    <Type Name="Cursos">
+      <Column Name="IdCurso" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Recursos" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Costo" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="idTemario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idDocente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SP_ModificaAlumno" Method="SP_ModificaAlumno">
+    <Parameter Name="idAlumno" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="apellido" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="fecha_n" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="genero" Type="System.Char" DbType="Char(1)" />
+    <ElementType Name="SP_ModificaAlumnoResult">
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(31) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
