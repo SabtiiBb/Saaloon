@@ -6625,7 +6625,8 @@ a.close.disabled {
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: #fff;
+  color: #000000;
+  font-weight: bold;
   text-align: center;
 }
 
