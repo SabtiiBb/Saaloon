@@ -227,9 +227,10 @@
     <Content Include="Content\img\banner1.png" />
     <Content Include="Content\img\banner2.png" />
     <Content Include="Content\img\banner3.png" />
+    <Content Include="Content\img\cursos-de-programacion-en-Fundamentos-de-la-programación-en-Java.jpg" />
+    <Content Include="Content\img\cursos-programación-para-juegos.jpg" />
     <Content Include="Content\img\Imagen1.jpg" />
     <Content Include="Content\img\Imagen2.jpg" />
-    <Content Include="Content\img\LOGOV.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
