@@ -212,7 +212,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PerfilVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -228,6 +227,7 @@
     <Content Include="Content\img\banner3.png" />
     <Content Include="Content\img\Imagen1.jpg" />
     <Content Include="Content\img\Imagen2.jpg" />
+    <Content Include="Content\img\LOGOV.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
