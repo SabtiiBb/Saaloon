@@ -232,12 +232,6 @@
     <Content Include="Content\img\cursos-programación-para-juegos.jpg" />
     <Content Include="Content\img\Imagen1.jpg" />
     <Content Include="Content\img\Imagen2.jpg" />
-    <Content Include="Content\img\intro.png" />
-    <Content Include="Content\img\introducción-a-la-programación-ok.jpg" />
-    <Content Include="Content\img\Java.png" />
-    <Content Include="Content\img\Photoshop.png" />
-    <Content Include="Content\img\php.jpg" />
-    <Content Include="Content\img\progra.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
