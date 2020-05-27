@@ -10281,12 +10281,22 @@ a.text-dark:hover, a.text-dark:focus {
     background-color: #ffbe76;
 }*/
 
-.loginloginlogin {
-    margin:auto;
-    width:100%;
+.loginloginlogin{
     text-align:center;
 }
 
+
 .imagenlogo{
     width: 3.5rem;
+}
+
+.imagenlogin{
+    margin:auto;
+    height:10.5rem;
+    margin-bottom: 2rem;
+}
+
+.formulariogrupo{
+   margin: auto;
+   width: 30%;
 }

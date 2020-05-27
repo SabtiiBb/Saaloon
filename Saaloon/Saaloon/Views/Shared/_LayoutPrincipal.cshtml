@@ -5,14 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Pagina Principal</title>
+        <title>Página Principal</title>
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
         <div class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
             <div class="container">
-                <a class="navbar-brand" href="#">Pagina Principal</a>
+                <a class="navbar-brand" href="#">
+                    @{ 
+                        string User = Convert.ToString(Session["Usuario"]);
+                        <h4>Bienvenido: @User</h4>
+                     }
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
