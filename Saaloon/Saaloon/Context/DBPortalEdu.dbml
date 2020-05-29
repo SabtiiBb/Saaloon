@@ -30,6 +30,7 @@
       <Column Name="Costo" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="idTemario" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="idDocente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Foto" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.SP_ModificaAlumno" Method="SP_ModificaAlumno">

@@ -532,6 +532,8 @@ namespace Saaloon.Context
 		
 		private System.Nullable<int> _idDocente;
 		
+		private string _Foto;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -550,6 +552,8 @@ namespace Saaloon.Context
     partial void OnidTemarioChanged();
     partial void OnidDocenteChanging(System.Nullable<int> value);
     partial void OnidDocenteChanged();
+    partial void OnFotoChanging(string value);
+    partial void OnFotoChanged();
     #endregion
 		
 		public Cursos()
@@ -693,6 +697,26 @@ namespace Saaloon.Context
 					this._idDocente = value;
 					this.SendPropertyChanged("idDocente");
 					this.OnidDocenteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Foto", DbType="VarChar(100)")]
+		public string Foto
+		{
+			get
+			{
+				return this._Foto;
+			}
+			set
+			{
+				if ((this._Foto != value))
+				{
+					this.OnFotoChanging(value);
+					this.SendPropertyChanging();
+					this._Foto = value;
+					this.SendPropertyChanged("Foto");
+					this.OnFotoChanged();
 				}
 			}
 		}

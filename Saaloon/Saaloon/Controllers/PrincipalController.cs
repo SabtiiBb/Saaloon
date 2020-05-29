@@ -40,5 +40,18 @@ namespace Saaloon.Controllers
 
             return View(Model);
         }
+
+        [HttpGet]
+        public ActionResult ListadoCursos()
+        {
+            List<Context.Cursos> ListaCursos;
+
+            using (var dbContext = new DBPortalEduDataContext())
+            {
+                ListaCursos = (from db in dbContext.Cursos select db).ToList();
+            }
+
+                return View(ListaCursos);
+        }
     }
 }

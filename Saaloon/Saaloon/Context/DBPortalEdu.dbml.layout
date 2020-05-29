@@ -21,10 +21,10 @@
         <classShapeMoniker Id="2aa029e9-b3ae-45fa-8d7b-dc61ee460936" />
       </nodes>
     </associationConnector>
-    <classShape Id="59a0d82b-ec9c-4466-ae0f-3a3157fa622a" absoluteBounds="0.875, 3, 2, 2.1554996744791666">
+    <classShape Id="26ebfcb5-731d-444d-9c87-d77f76e8317f" absoluteBounds="1, 2.875, 2, 2.3478011067708335">
       <DataClassMoniker Name="/DBPortalEduDataContext/Cursos" />
       <nestedChildShapes>
-        <elementListCompartment Id="cfaa42f6-073d-475e-b8a3-1dc5679431cb" absoluteBounds="0.89000000000000012, 3.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="4588d8f3-4685-44fd-bee7-aaff7d00080b" absoluteBounds="1.0150000000000001, 3.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
