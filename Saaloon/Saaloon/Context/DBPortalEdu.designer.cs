@@ -39,6 +39,24 @@ namespace Saaloon.Context
     partial void InsertCursos(Cursos instance);
     partial void UpdateCursos(Cursos instance);
     partial void DeleteCursos(Cursos instance);
+    partial void InsertCursoAlumno(CursoAlumno instance);
+    partial void UpdateCursoAlumno(CursoAlumno instance);
+    partial void DeleteCursoAlumno(CursoAlumno instance);
+    partial void InsertNotas(Notas instance);
+    partial void UpdateNotas(Notas instance);
+    partial void DeleteNotas(Notas instance);
+    partial void InsertTemario(Temario instance);
+    partial void UpdateTemario(Temario instance);
+    partial void DeleteTemario(Temario instance);
+    partial void InsertDocentes(Docentes instance);
+    partial void UpdateDocentes(Docentes instance);
+    partial void DeleteDocentes(Docentes instance);
+    partial void Insertcompras(compras instance);
+    partial void Updatecompras(compras instance);
+    partial void Deletecompras(compras instance);
+    partial void Insertdetallecompra(detallecompra instance);
+    partial void Updatedetallecompra(detallecompra instance);
+    partial void Deletedetallecompra(detallecompra instance);
     #endregion
 		
 		public DBPortalEduDataContext() : 
@@ -95,6 +113,54 @@ namespace Saaloon.Context
 			}
 		}
 		
+		public System.Data.Linq.Table<CursoAlumno> CursoAlumno
+		{
+			get
+			{
+				return this.GetTable<CursoAlumno>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Notas> Notas
+		{
+			get
+			{
+				return this.GetTable<Notas>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Temario> Temario
+		{
+			get
+			{
+				return this.GetTable<Temario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Docentes> Docentes
+		{
+			get
+			{
+				return this.GetTable<Docentes>();
+			}
+		}
+		
+		public System.Data.Linq.Table<compras> compras
+		{
+			get
+			{
+				return this.GetTable<compras>();
+			}
+		}
+		
+		public System.Data.Linq.Table<detallecompra> detallecompra
+		{
+			get
+			{
+				return this.GetTable<detallecompra>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ModificaAlumno")]
 		public ISingleResult<SP_ModificaAlumnoResult> SP_ModificaAlumno([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idAlumno, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_n, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> genero)
 		{
@@ -121,6 +187,10 @@ namespace Saaloon.Context
 		
 		private EntitySet<Alumno> _Alumno;
 		
+		private EntitySet<Docentes> _Docentes;
+		
+		private EntitySet<compras> _compras;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -140,6 +210,8 @@ namespace Saaloon.Context
 		public Usuario()
 		{
 			this._Alumno = new EntitySet<Alumno>(new Action<Alumno>(this.attach_Alumno), new Action<Alumno>(this.detach_Alumno));
+			this._Docentes = new EntitySet<Docentes>(new Action<Docentes>(this.attach_Docentes), new Action<Docentes>(this.detach_Docentes));
+			this._compras = new EntitySet<compras>(new Action<compras>(this.attach_compras), new Action<compras>(this.detach_compras));
 			OnCreated();
 		}
 		
@@ -256,6 +328,32 @@ namespace Saaloon.Context
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Docentes", Storage="_Docentes", ThisKey="IdUsuario", OtherKey="idUsuario")]
+		public EntitySet<Docentes> Docentes
+		{
+			get
+			{
+				return this._Docentes;
+			}
+			set
+			{
+				this._Docentes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_compras", Storage="_compras", ThisKey="IdUsuario", OtherKey="IdUsuario")]
+		public EntitySet<compras> compras
+		{
+			get
+			{
+				return this._compras;
+			}
+			set
+			{
+				this._compras.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -287,6 +385,30 @@ namespace Saaloon.Context
 			this.SendPropertyChanging();
 			entity.Usuario = null;
 		}
+		
+		private void attach_Docentes(Docentes entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = this;
+		}
+		
+		private void detach_Docentes(Docentes entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = null;
+		}
+		
+		private void attach_compras(compras entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = this;
+		}
+		
+		private void detach_compras(compras entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Alumno")]
@@ -306,6 +428,8 @@ namespace Saaloon.Context
 		private System.Nullable<char> _genero;
 		
 		private System.Nullable<int> _idUsuario;
+		
+		private EntitySet<CursoAlumno> _CursoAlumno;
 		
 		private EntityRef<Usuario> _Usuario;
 		
@@ -329,6 +453,7 @@ namespace Saaloon.Context
 		
 		public Alumno()
 		{
+			this._CursoAlumno = new EntitySet<CursoAlumno>(new Action<CursoAlumno>(this.attach_CursoAlumno), new Action<CursoAlumno>(this.detach_CursoAlumno));
 			this._Usuario = default(EntityRef<Usuario>);
 			OnCreated();
 		}
@@ -457,6 +582,19 @@ namespace Saaloon.Context
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Alumno_CursoAlumno", Storage="_CursoAlumno", ThisKey="IdAlumno", OtherKey="IdAlumno")]
+		public EntitySet<CursoAlumno> CursoAlumno
+		{
+			get
+			{
+				return this._CursoAlumno;
+			}
+			set
+			{
+				this._CursoAlumno.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Alumno", Storage="_Usuario", ThisKey="idUsuario", OtherKey="IdUsuario", IsForeignKey=true)]
 		public Usuario Usuario
 		{
@@ -510,6 +648,18 @@ namespace Saaloon.Context
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_CursoAlumno(CursoAlumno entity)
+		{
+			this.SendPropertyChanging();
+			entity.Alumno = this;
+		}
+		
+		private void detach_CursoAlumno(CursoAlumno entity)
+		{
+			this.SendPropertyChanging();
+			entity.Alumno = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Cursos")]
@@ -531,8 +681,6 @@ namespace Saaloon.Context
 		private System.Nullable<int> _idTemario;
 		
 		private System.Nullable<int> _idDocente;
-		
-		private string _Foto;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -558,6 +706,10 @@ namespace Saaloon.Context
 		
 		public Cursos()
 		{
+			this._CursoAlumno = new EntitySet<CursoAlumno>(new Action<CursoAlumno>(this.attach_CursoAlumno), new Action<CursoAlumno>(this.detach_CursoAlumno));
+			this._detallecompra = new EntitySet<detallecompra>(new Action<detallecompra>(this.attach_detallecompra), new Action<detallecompra>(this.detach_detallecompra));
+			this._Temario = default(EntityRef<Temario>);
+			this._Docentes = default(EntityRef<Docentes>);
 			OnCreated();
 		}
 		
@@ -672,6 +824,10 @@ namespace Saaloon.Context
 			{
 				if ((this._idTemario != value))
 				{
+					if (this._Temario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnidTemarioChanging(value);
 					this.SendPropertyChanging();
 					this._idTemario = value;
@@ -692,6 +848,10 @@ namespace Saaloon.Context
 			{
 				if ((this._idDocente != value))
 				{
+					if (this._Docentes.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnidDocenteChanging(value);
 					this.SendPropertyChanging();
 					this._idDocente = value;
@@ -700,23 +860,6 @@ namespace Saaloon.Context
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Foto", DbType="VarChar(100)")]
-		public string Foto
-		{
-			get
-			{
-				return this._Foto;
-			}
-			set
-			{
-				if ((this._Foto != value))
-				{
-					this.OnFotoChanging(value);
-					this.SendPropertyChanging();
-					this._Foto = value;
-					this.SendPropertyChanged("Foto");
-					this.OnFotoChanged();
 				}
 			}
 		}
