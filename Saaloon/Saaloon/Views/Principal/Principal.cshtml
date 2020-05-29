@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Saaloon.Context.Cursos>
 @{
     ViewBag.Title = "Principal";
     Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
@@ -42,101 +42,29 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="~/Content/img/Algunos-cursos-de-programación-gratis.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Algoritmo</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">El curso tiene el propósito que el estudiante conozca, utilice y se familiarice con el uso de los algoritmos y las estructuras de datos.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="~/Content/img/cursos-programación-para-juegos.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Ethical Hacking</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Se sumergirá al alumno en temáticas (desde un nivel básico a avanzado) tales como el hacking de sistemas, redes, Wi-Fi, aplicaciones web.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top" src="~/Content/img/@Html.DisplayFor(modelItem => item.Foto)" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">@Html.DisplayFor(modelItem => item.Nombre)</a>
+                                </h4>
+                                <h5>$@Html.DisplayFor(modelItem => item.Costo)</h5>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="~/Content/img/cursos-de-programacion-en-Fundamentos-de-la-programación-en-Java.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">ASP.NET MVC 5</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Este curso permitira a los estudiantes crear Modelos dentro de una aplicación MVC que implementen la lógica de negocios necesaria. </p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="~/Content/img/1473078000859_1.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">C# Novato</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">En este Curso de programación en C# , Aprenderemos a crear proyectos reales en C#, tu podrás escribir y leer código en C# en cuestion de minutos</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="~/Content/img/1192848_e63a.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">PHP Desde cero</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text"> Con este lenguaje de programación puedes crear sitios y aplicaciones web dinámicas con conexión a base del datos.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="~/Content/img/Photoshop.png" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">PhotoShop</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Aprende Adobe Photoshop desde cero y domina el mejor software de tratamiento, retoque y creación de imágenes digitales del mercado.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.col-lg-9 -->
-    </div>
+            </div>
+<!-- /.col-lg-9 -->
+                </div>
     <!-- /.row -->
 </div>

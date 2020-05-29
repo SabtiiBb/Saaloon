@@ -13,7 +13,14 @@ namespace Saaloon.Controllers
         // GET: Principal
         public ActionResult Principal()
         {
-            return View();
+            List<Context.Cursos> Listado;
+
+            using (var dbContext = new DBPortalEduDataContext())
+            {
+                Listado = (from db in dbContext.Cursos select db).ToList();
+            }
+
+                return View(Listado);
         }
 
         [HttpGet]
