@@ -24,8 +24,9 @@ namespace Saaloon.Controllers
         }
 
         [HttpGet]
-        public ActionResult Perfil(int idUsuario)
+        public ActionResult Perfil()
         {
+            int idUsuario = int.Parse(Session["IdUsuario"].ToString());
             PerfilVM Model = new PerfilVM();
             Model.idUsuario = idUsuario;
             Usuario User = new Usuario();

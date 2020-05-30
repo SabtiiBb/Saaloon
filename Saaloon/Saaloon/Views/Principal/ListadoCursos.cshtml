@@ -23,7 +23,7 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </div>
             <div class="card col-sm-2 container-md">
-                <img class="img-fluid" src="~/Content/img/@Html.DisplayFor(modelItem => item.Foto)">
+                <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.Foto)">
                 <p>$@Html.DisplayFor(modelItem => item.Costo)</p>
             </div>
 

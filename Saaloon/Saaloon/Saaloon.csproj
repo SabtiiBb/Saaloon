@@ -383,6 +383,7 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Principal\ListadoCursos.cshtml" />
+    <Content Include="Views\Principal\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
