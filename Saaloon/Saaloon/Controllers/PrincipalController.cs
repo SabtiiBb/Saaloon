@@ -13,12 +13,20 @@ namespace Saaloon.Controllers
         // GET: Principal
         public ActionResult Principal()
         {
-            return View();
+            List<Context.Cursos> Listado;
+
+            using (var dbContext = new DBPortalEduDataContext())
+            {
+                Listado = (from db in dbContext.Cursos select db).ToList();
+            }
+
+                return View(Listado);
         }
 
         [HttpGet]
-        public ActionResult Perfil(int idUsuario)
+        public ActionResult Perfil()
         {
+            int idUsuario = int.Parse(Session["IdUsuario"].ToString());
             PerfilVM Model = new PerfilVM();
             Model.idUsuario = idUsuario;
             Usuario User = new Usuario();

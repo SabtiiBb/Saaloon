@@ -32,13 +32,13 @@ namespace Saaloon.Controllers
                 if (datos.Validacion() == true)
                 {
                     Session["Usuario"] = datos.Usuario;
-                    return View("~/Views/Principal/Principal.cshtml");
+                    Session["IdUsuario"] = datos.IdUsuario;
+                    return RedirectToAction("Principal", "Principal");
                 }
                 else
                 {
                     return View("Login");
                 }
-                return View();
             }
             else
             {
