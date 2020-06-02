@@ -10,6 +10,7 @@ namespace Saaloon.Models
 {
     public class Login
     {
+        public int IdUsuario { get; set; }
         [Required(ErrorMessage ="<font color= 'red'> No puede dejar este espacio en blanco </font>")]
         [Display(Name = "Correo")]
         public String correo { get; set; }
@@ -37,6 +38,7 @@ DBPortalEduDataContext db = new DBPortalEduDataContext();
                     foreach(var Data in datos)
                     {
                     Usuario = Data.Usuario1;
+                    IdUsuario = Data.IdUsuario;
                     }
                 return true;
             }

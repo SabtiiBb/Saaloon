@@ -232,6 +232,7 @@
     <Content Include="Content\img\cursos-programación-para-juegos.jpg" />
     <Content Include="Content\img\Imagen1.jpg" />
     <Content Include="Content\img\Imagen2.jpg" />
+    <Content Include="Content\img\Telecommuting-rafiki.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -382,6 +383,8 @@
     <Content Include="Views\Principal\Principal.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Principal\ListadoCursos.cshtml" />
+    <Content Include="Views\Principal\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -395,11 +398,13 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Cursos\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Context\DBPortalEdu.dbml.layout">
       <DependentUpon>DBPortalEdu.dbml</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

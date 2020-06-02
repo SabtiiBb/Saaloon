@@ -1739,12 +1739,12 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color:rgba(223, 230, 233,1.0);
 }
 
 .table-hover tbody tr:hover {
   color: #212529;
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: rgba(130, 204, 221,1.0)
 }
 
 .table-primary,
@@ -10299,4 +10299,23 @@ a.text-dark:hover, a.text-dark:focus {
 .formulariogrupo{
    margin: auto;
    width: 30%;
+}
+
+.Imagenperfilvc{
+    height: 250px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.MisDatos > div{
+    width:100%;
+    margin:2rem;
+}
+
+label{
+    margin: 2rem;
+}
+
+table.MisDatos{
+    width:100%;
 }

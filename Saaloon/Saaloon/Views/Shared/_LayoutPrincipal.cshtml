@@ -16,7 +16,7 @@
                 <a class="navbar-brand" href="#">
                     @{
                         string User = Convert.ToString(Session["Usuario"]);
-                        <h4>Bienvenido: @User</h4>
+                        <h4><b> Bienvenido: @User</b></h4>  
                     }
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,19 +25,16 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">
-                                Home
-                                <span class="sr-only">(current)</span>
-                            </a>
+                                @Html.ActionLink("Principal", "Principal", "Principal", new { @class = "nav-link" })
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                        <li class="nav-item active">
+                                @Html.ActionLink("Cursos", "ListadoCursos", "Principal", new { @class = "nav-link" })
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Mi Perfil", "Perfil", "Principal", new { @class = "nav-link" })
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Cerrar Sesión", "Cerrar", "Home", new { @class = "btn btn-secondary" })
                         </li>
                     </ul>
                 </div>
@@ -45,21 +42,21 @@
         </div>
         <div class="container body-content" >
             @RenderBody()
-            <hr />
-            <footer class="py-5 bg-dark">
-                <div class="container">
-                    <center>
-                        <p class="m-0 text-center text-white"> Copyright &copy; VirtualClass 2020</p>
-                        <br />
-                        <left><i class="fa fa-facebook-square fa-2x" style="color:#FFFFFF;"></i></left>
-                        <left><i class="fa fa-instagram fa-2x" style="color:#FFFFFF;"></i></left>
-                        <left><i class="fa fa-twitter-square fa-2x" style="color:#FFFFFF;"></i></left>
-                    </center>
-
-          
-                </div>
-            </footer>
+            <hr />            
         </div>
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <center>
+                    <p class="m-0 text-center text-white"> Copyright &copy; VirtualClass 2020</p>
+                    <br />
+                    <left><i class="fa fa-facebook-square fa-2x" style="color:#FFFFFF;"></i></left>
+                    <left><i class="fa fa-instagram fa-2x" style="color:#FFFFFF;"></i></left>
+                    <left><i class="fa fa-twitter-square fa-2x" style="color:#FFFFFF;"></i></left>
+                </center>
+
+
+            </div>
+        </footer>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
     </body>
