@@ -1,17 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
+    <script src="https://kit.fontawesome.com/7a98527200.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Virtual Class</title>
+    <title>@ViewBag.Title - Iniciar Sesión</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
     <div class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <img src="~/Content/img/LOGOV.png" class="imagenlogo"/>
+        <img src="~/Content/img/LOGOV.png" class="imagenlogo" />
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,24 +20,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size:1.5rem;" > Virtual Class <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size:1.5rem;"> Virtual Class <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                @Html.ActionLink("Iniciar Sesión", "Login", "Home", new{@class= "btn btn-outline-primary my-2 my-sm-0"})
-                &nbsp;
-                &nbsp;
-                @Html.ActionLink("Registrarse", "Login", "Home", new { @class = "btn btn-outline-success my-2 my-sm-0" })
-            </form>
         </div>
     </div>
-
-    
         @RenderBody()
         <hr />
-        <footer>
-
-        </footer>
+        <footer></footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

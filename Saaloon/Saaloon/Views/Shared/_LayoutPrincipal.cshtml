@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+            <div class="container">
+                <img src="~/Content/img/LOGOV.png" class="imagenlogo" />
+                <a class="navbar-brand" href="#">
+                    @{
+                        string User = Convert.ToString(Session["Usuario"]);
+                        <h4><b> Bienvenido: @User</b></h4>  
+                    }
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                                @Html.ActionLink("Principal", "Principal", "Principal", new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item active">
+                                @Html.ActionLink("Cursos", "ListadoCursos", "Principal", new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Mi Perfil", "Perfil", "Principal", new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Cerrar Sesión", "Cerrar", "Home", new { @class = "btn btn-secondary" })
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content" >
+            @RenderBody()
+            <hr />            
+        </div>
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <center>
+                    <p class="m-0 text-center text-white"> Copyright &copy; VirtualClass 2020</p>
+                    <br />
+                    <left><i class="fa fa-facebook-square fa-2x" style="color:#FFFFFF;"></i></left>
+                    <left><i class="fa fa-instagram fa-2x" style="color:#FFFFFF;"></i></left>
+                    <left><i class="fa fa-twitter-square fa-2x" style="color:#FFFFFF;"></i></left>
+                </center>
+
+
+            </div>
+        </footer>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+    </body>
+</html>
