@@ -23,7 +23,7 @@ namespace Saaloon.Models
         [Required(ErrorMessage = "Este Campo Esta Vacio")]
         [DisplayName("Fecha de Nacimiento: ")]
         [DataType(DataType.Date)]
-        public DateTime fecha_n { get; set; }
+        public string fecha_n { get; set; }
         [Required(ErrorMessage = "Seleccione un Genero")]
         [DisplayName("Genero: ")]
         public String genero { get; set; }
