@@ -232,6 +232,7 @@
     <Content Include="Content\img\cursos-programación-para-juegos.jpg" />
     <Content Include="Content\img\Imagen1.jpg" />
     <Content Include="Content\img\Imagen2.jpg" />
+    <Content Include="Content\img\Telecommuting-rafiki.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

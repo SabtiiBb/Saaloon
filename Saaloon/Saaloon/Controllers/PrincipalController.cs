@@ -31,7 +31,7 @@ namespace Saaloon.Controllers
             Model.idUsuario = idUsuario;
             Usuario User = new Usuario();
             Alumno Alum = new Alumno();
-
+            
             using (var dbContext = new DBPortalEduDataContext())
             {
                 User = (from db in dbContext.Usuario where db.IdUsuario == Model.idUsuario select db).Single();
@@ -42,8 +42,7 @@ namespace Saaloon.Controllers
                 Model.nombre = Alum.nombre;
                 Model.apellido = Alum.apellido;
                 Model.fecha_n = Convert.ToDateTime(Alum.fecha_n);
-                Model.genero = Convert.ToChar(Alum.genero);
-
+                Model.genero = (Alum.genero).ToString() == "M" ? "Masculino" : "Femenino";
             }
 
             return View(Model);

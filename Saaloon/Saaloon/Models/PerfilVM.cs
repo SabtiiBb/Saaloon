@@ -26,7 +26,7 @@ namespace Saaloon.Models
         public DateTime fecha_n { get; set; }
         [Required(ErrorMessage = "Seleccione un Genero")]
         [DisplayName("Genero: ")]
-        public char genero { get; set; }
+        public String genero { get; set; }
         public int idUsuario { get; set; }
 
 
