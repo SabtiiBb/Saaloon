@@ -209,6 +209,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ContCursos.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -385,6 +386,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Principal\ListadoCursos.cshtml" />
     <Content Include="Views\Principal\Perfil.cshtml" />
+    <Content Include="Views\Principal\ContenidoCurso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

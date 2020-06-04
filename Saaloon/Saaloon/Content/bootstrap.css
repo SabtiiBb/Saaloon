@@ -10319,3 +10319,139 @@ label{
 table.MisDatos{
     width:100%;
 }
+
+.videointro{
+    width: 100%;
+    height: 100%;
+}
+
+.grid-container { height: 100%; margin: 0;  }
+
+.grid-container {    
+     display: grid;    
+     margin: 1rem;  
+     height: 35rem;
+     grid-template-columns: 1fr 0.4fr;
+     grid-template-rows: 0.30fr 1fr 0.5fr 0.25fr;
+     gap: 1px 1px;
+}
+
+.tema > h2{ 
+    text-align:center;
+    grid-area: 1 / 1 / 2 / 2; 
+}
+
+.precio { 
+    grid-area: 1 / 2 / 2 / 3;
+    font-size: 1.5rem;
+}
+
+.descripcion { 
+    grid-area: 2 / 2 / 3 / 3;
+    font-size: 1.2rem;
+}
+
+.recursos { 
+    grid-area: 3 / 2 / 4 / 3; 
+    font-size: 1.2rem;
+}
+
+.docente { 
+    grid-area: 4 / 2 / 5 / 3; 
+    font-size: 1.2rem;
+}
+
+.video { 
+    grid-area: 2 / 1 / 5 / 2;
+    padding: 0;
+}
+
+/* For presentation only, no need to copy the code below */
+.grid-container > div{ 
+    padding:1rem;
+    position: relative;
+    text-align:justify;
+}
+
+
+.grid-container-temas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.1fr 0.9fr;
+  gap: 1px 1px;
+  grid-template-areas: "temario temario temario temario" "acercadeltema acercadeltema acercadeltema acercadeltema";
+}
+
+.temario-temas{ 
+    grid-area: temario; 
+    text-align:center;
+    font-weight:bold;
+}
+
+.temario-temas > h3{ 
+    padding:1rem;
+    grid-area: temario; 
+    font-weight:bold;
+}
+
+.acercadeltema-temas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "tma tma imagen" "descripciondeltema descripciondeltema imagen";
+  grid-area: acercadeltema;
+  background-color:rgb(223, 230, 233);
+  color: black;
+  font-size: 1.5rem;
+  font-family:'Franklin Gothic Medium';
+  padding: 0.8rem;
+}
+
+.tma-temas { 
+    grid-area: tma; 
+    text-align:center;
+}
+
+.descripciondeltema-temas { 
+    grid-area: descripciondeltema; 
+    text-align: justify;
+    display:flex;
+    align-items: center;    
+}
+
+.imagen-temas { grid-area: imagen; }
+
+.imagen-temas > img{    
+        width:100%;
+}
+
+.myButton {
+	-moz-box-shadow: 0px 10px 14px -7px #3dc21b;
+	-webkit-box-shadow: 0px 10px 14px -7px #3dc21b;
+	box-shadow: 0px 10px 14px -7px #3dc21b;
+	background-color:#44c767;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 28px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+    background-color:#fbc531;
+    border:1px solid #fbc531;
+    box-shadow: 0px 10px 14px -7px #fbc531;
+	top:1px;
+}
+

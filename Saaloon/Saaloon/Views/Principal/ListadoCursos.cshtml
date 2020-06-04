@@ -23,7 +23,9 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </div>
             <div class="card col-sm-2 container-md">
-                <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.Foto)">
+                <a href='@Url.Action("ContenidoCurso", "Principal", new {idCurso= item.IdCurso })'>
+                    <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.Foto)">
+                </a>                
                 <p>$@Html.DisplayFor(modelItem => item.Costo)</p>
             </div>
 

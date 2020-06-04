@@ -47,23 +47,6 @@
       <Association Name="Cursos_CursoAlumno" Member="Cursos" ThisKey="IdCurso" OtherKey="IdCurso" Type="Cursos" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Cursos" Member="Cursos">
-    <Type Name="Cursos">
-      <Column Name="IdCurso" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Recursos" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Costo" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="idTemario" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idDocente" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Foto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="Cursos_CursoAlumno" Member="CursoAlumno" ThisKey="IdCurso" OtherKey="IdCurso" Type="CursoAlumno" />
-      <Association Name="Cursos_detallecompra" Member="detallecompra" ThisKey="IdCurso" OtherKey="idcursodetalle" Type="detallecompra" />
-      <Association Name="Cursos_Pagos" Member="Pagos" ThisKey="IdCurso" OtherKey="IdCurso" Type="Pagos" />
-      <Association Name="Docentes_Cursos" Member="Docentes" ThisKey="idDocente" OtherKey="IdDocente" Type="Docentes" IsForeignKey="true" />
-      <Association Name="Temario_Cursos" Member="Temario" ThisKey="idTemario" OtherKey="IdTema" Type="Temario" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.compras" Member="compras">
     <Type Name="compras">
       <Column Name="id_Compra" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -101,14 +84,6 @@
       <Association Name="CursoAlumno_Notas" Member="CursoAlumno" ThisKey="idCursoAlumno" OtherKey="IdCurso_Alumno" Type="CursoAlumno" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Temario" Member="Temario">
-    <Type Name="Temario">
-      <Column Name="IdTema" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Tema" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Association Name="Temario_Cursos" Member="Cursos" ThisKey="IdTema" OtherKey="idTemario" Type="Cursos" />
-    </Type>
-  </Table>
   <Table Name="dbo.Pagos" Member="Pagos">
     <Type Name="Pagos">
       <Column Name="IdPago" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -116,6 +91,33 @@
       <Column Name="IdAlumno" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Alumno_Pagos" Member="Alumno" ThisKey="IdAlumno" OtherKey="IdAlumno" Type="Alumno" IsForeignKey="true" />
       <Association Name="Cursos_Pagos" Member="Cursos" ThisKey="IdCurso" OtherKey="IdCurso" Type="Cursos" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cursos" Member="Cursos">
+    <Type Name="Cursos">
+      <Column Name="IdCurso" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Recursos" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Costo" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="idTemario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idDocente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Foto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Videointro" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Cursos_CursoAlumno" Member="CursoAlumno" ThisKey="IdCurso" OtherKey="IdCurso" Type="CursoAlumno" />
+      <Association Name="Cursos_detallecompra" Member="detallecompra" ThisKey="IdCurso" OtherKey="idcursodetalle" Type="detallecompra" />
+      <Association Name="Cursos_Pagos" Member="Pagos" ThisKey="IdCurso" OtherKey="IdCurso" Type="Pagos" />
+      <Association Name="Docentes_Cursos" Member="Docentes" ThisKey="idDocente" OtherKey="IdDocente" Type="Docentes" IsForeignKey="true" />
+      <Association Name="Temario_Cursos" Member="Temario" ThisKey="idTemario" OtherKey="IdTema" Type="Temario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Temario" Member="Temario">
+    <Type Name="Temario">
+      <Column Name="IdTema" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tema" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="FotoTema" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Temario_Cursos" Member="Cursos" ThisKey="IdTema" OtherKey="idTemario" Type="Cursos" />
     </Type>
   </Table>
   <Function Name="dbo.SP_ModificaAlumno" Method="SP_ModificaAlumno">
