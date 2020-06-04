@@ -214,6 +214,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PerfilVM.cs" />
     <Compile Include="Models\Registrarse.cs" />
+    <Compile Include="Models\SessionData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -385,6 +386,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Principal\ListadoCursos.cshtml" />
     <Content Include="Views\Principal\Perfil.cshtml" />
+    <Content Include="Views\Home\Registrarse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
