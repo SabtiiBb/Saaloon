@@ -77,31 +77,5 @@ namespace Saaloon.Controllers
 
                 return View(ListaCursos);
         }
-
-        [HttpGet]
-        public ActionResult ContenidoCurso (int idCurso)
-        {
-            ContCursos objCurso = new ContCursos();
-
-            using (var dbContext = new DBPortalEduDataContext())
-            {
-                Cursos curso = (from db in dbContext.Cursos where db.IdCurso == idCurso select db).Single();
-                List<Temario> temario = (from db in dbContext.Temario where db.IdTema == curso.idTemario select db).ToList();
-                Docentes docentes = (from db in dbContext.Docentes where db.IdDocente == curso.idDocente select db).Single();
-
-                objCurso.IdCurso = curso.IdCurso;
-                objCurso.NombreCurso = curso.Nombre;
-                objCurso.DescripcionCurso = curso.Descripcion;
-                objCurso.Recursos = curso.Recursos;
-                objCurso.Costo = Convert.ToDecimal(curso.Costo);
-                objCurso.Videointro = curso.Videointro;
-
-                objCurso.ListaTemario= temario;
-
-                objCurso.IdDocente = docentes.IdDocente;
-                objCurso.NombreDocente = docentes.nombre;
-            }
-            return View (objCurso);
-        }
     }
 }
