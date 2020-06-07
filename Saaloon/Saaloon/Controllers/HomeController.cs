@@ -14,7 +14,7 @@ namespace Saaloon.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            session.destroySession();
+            //session.destroySession();
             return View();
         }
 
@@ -34,21 +34,23 @@ namespace Saaloon.Controllers
                 if (datos.Validacion() == true)
                 {
                     session.setSession("Usuario", datos.Usuario);
-                    ViewBag.User = session.getSession("Usuario");
-                    //Session["Usuario"] = datos.Usuario;
+                    ViewBag.User1 = session.getSession("Usuario");
                     Session["IdUsuario"] = datos.IdUsuario;
-                    return RedirectToAction("Principal", "Principal");
+                    return RedirectToAction("Users","Users");
                 }
                 else
                 {
-                    return View("Login");
+                    ViewBag.Message = "Error";
+                    return View("Principal");
                 }
             }
             else
             {
-                return View("Login");
+                return View("Principal");
             }
         }
+
+        
         [AllowAnonymous]
         public ActionResult Registrarse()
         {

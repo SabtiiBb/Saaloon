@@ -8,6 +8,7 @@ using Saaloon.Models;
 
 namespace Saaloon.Controllers
 {
+    [Authorize]
     public class PrincipalController : Controller
     {
         // GET: Principal
