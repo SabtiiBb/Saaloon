@@ -27,7 +27,7 @@ DBPortalEduDataContext db = new DBPortalEduDataContext();
         public bool Validacion()
         {
             var query = from a in db.Usuario
-                        where a.correo == correo && a.contraseña == contraseña
+                        where a.correo == correo && a.contraseña == contraseña && a.Activo==1
                         select a;
 
             if(query.Count() > 0)
