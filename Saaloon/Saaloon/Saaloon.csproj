@@ -210,10 +210,12 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ClaseTema.cs" />
+    <Compile Include="Models\CrearCursoDoc.cs" />
     <Compile Include="Models\CursoContenido.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PerfilDocente.cs" />
     <Compile Include="Models\PerfilVM.cs" />
     <Compile Include="Models\Registrarse.cs" />
     <Compile Include="Models\SessionData.cs" />
@@ -394,6 +396,7 @@
     <Content Include="Views\Principal\ContenidoCursoTema.cshtml" />
     <Content Include="Views\Principal\ClaseTemaCurso.cshtml" />
     <Content Include="Views\Shared\_LayoutDocente.cshtml" />
+    <Content Include="Views\Principal\CrearCurso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

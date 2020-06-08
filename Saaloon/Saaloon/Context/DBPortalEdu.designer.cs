@@ -218,13 +218,6 @@ namespace Saaloon.Context
 			return ((ISingleResult<SP_ModificaCursosResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ModificaDocente")]
-		public ISingleResult<SP_ModificaDocenteResult> SP_ModificaDocente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idDocentes, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_n, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> genero, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IdUsuario", DbType="Int")] System.Nullable<int> idUsuario)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idDocentes, nombre, apellido, fecha_n, genero, idUsuario);
-			return ((ISingleResult<SP_ModificaDocenteResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ModificaNotas")]
 		public ISingleResult<SP_ModificaNotasResult> SP_ModificaNotas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idNota, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nota", DbType="Decimal(18,0)")] System.Nullable<decimal> nota, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(15)")] string estado)
 		{
@@ -244,6 +237,13 @@ namespace Saaloon.Context
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario, usuario, correo, contraseña, activo, tipo);
 			return ((ISingleResult<SP_ModificaUsuarioResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_ModificaDocente")]
+		public ISingleResult<SP_ModificaDocenteResult> SP_ModificaDocente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idDocentes, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_n, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> genero)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idDocentes, nombre, apellido, fecha_n, genero);
+			return ((ISingleResult<SP_ModificaDocenteResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3361,32 +3361,6 @@ namespace Saaloon.Context
 		}
 	}
 	
-	public partial class SP_ModificaDocenteResult
-	{
-		
-		private string _Mensaje;
-		
-		public SP_ModificaDocenteResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="VarChar(31) NOT NULL", CanBeNull=false)]
-		public string Mensaje
-		{
-			get
-			{
-				return this._Mensaje;
-			}
-			set
-			{
-				if ((this._Mensaje != value))
-				{
-					this._Mensaje = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_ModificaNotasResult
 	{
 		
@@ -3445,6 +3419,32 @@ namespace Saaloon.Context
 		private string _Mensaje;
 		
 		public SP_ModificaUsuarioResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="VarChar(31) NOT NULL", CanBeNull=false)]
+		public string Mensaje
+		{
+			get
+			{
+				return this._Mensaje;
+			}
+			set
+			{
+				if ((this._Mensaje != value))
+				{
+					this._Mensaje = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_ModificaDocenteResult
+	{
+		
+		private string _Mensaje;
+		
+		public SP_ModificaDocenteResult()
 		{
 		}
 		

@@ -183,17 +183,6 @@
       <Column Name="Mensaje" Type="System.String" DbType="VarChar(31) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SP_ModificaDocente" Method="SP_ModificaDocente">
-    <Parameter Name="idDocentes" Type="System.Int32" DbType="Int" />
-    <Parameter Name="nombre" Type="System.String" DbType="VarChar(30)" />
-    <Parameter Name="apellido" Type="System.String" DbType="VarChar(30)" />
-    <Parameter Name="fecha_n" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="genero" Type="System.Char" DbType="Char(1)" />
-    <Parameter Name="IdUsuario" Parameter="idUsuario" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SP_ModificaDocenteResult">
-      <Column Name="Mensaje" Type="System.String" DbType="VarChar(31) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SP_ModificaNotas" Method="SP_ModificaNotas">
     <Parameter Name="idNota" Type="System.Int32" DbType="Int" />
     <Parameter Name="Nota" Parameter="nota" Type="System.Decimal" DbType="Decimal(18,0)" />
@@ -218,6 +207,16 @@
     <Parameter Name="Activo" Parameter="activo" Type="System.Int32" DbType="Int" />
     <Parameter Name="tipo" Type="System.Int32" DbType="Int" />
     <ElementType Name="SP_ModificaUsuarioResult">
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(31) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_ModificaDocente" Method="SP_ModificaDocente">
+    <Parameter Name="idDocentes" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="apellido" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="fecha_n" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="genero" Type="System.Char" DbType="Char(1)" />
+    <ElementType Name="SP_ModificaDocenteResult">
       <Column Name="Mensaje" Type="System.String" DbType="VarChar(31) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
