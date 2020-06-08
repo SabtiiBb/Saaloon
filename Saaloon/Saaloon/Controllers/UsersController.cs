@@ -12,7 +12,7 @@ namespace Saaloon.Controllers
         SessionData session = new SessionData();
         // GET: Users
 
-        public ActionResult Users()
+        public ActionResult LogIn()
         {
             ViewBag.User = session.getSession("Usuario");
             if (!String.IsNullOrEmpty(ViewBag.User))

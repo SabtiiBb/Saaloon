@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using Saaloon.Context;
 using Saaloon.Models;
+using Saaloon.Filters;
 
 namespace Saaloon.Controllers
 {
-    [Authorize]
+    [Access]
     public class PrincipalController : Controller
     {
         // GET: Principal

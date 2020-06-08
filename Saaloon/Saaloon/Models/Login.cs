@@ -22,6 +22,8 @@ namespace Saaloon.Models
 
         public String Usuario { get; set; }
 
+        public String tipo { get; set; }
+
 DBPortalEduDataContext db = new DBPortalEduDataContext();
         
         public bool Validacion()
@@ -32,13 +34,14 @@ DBPortalEduDataContext db = new DBPortalEduDataContext();
 
             if(query.Count() > 0)
             {
-                var query2 = from a in db.Usuario where a.correo == correo select a;
-                var datos = query2.ToList();
+                //var query2 = from a in db.Usuario where a.correo == correo select a;
+                var datos = query.ToList();
 
                     foreach(var Data in datos)
                     {
                     Usuario = Data.Usuario1;
                     IdUsuario = Data.IdUsuario;
+                    tipo = Data.tipo.ToString();
                     }
                 return true;
             }

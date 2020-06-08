@@ -206,6 +206,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Filters\Access.cs" />
+    <Compile Include="Filters\TAccess.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -384,11 +386,10 @@
     <Content Include="Views\Shared\_LayoutPrincipal.cshtml" />
     <Content Include="Views\Principal\Principal.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Principal\ListadoCursos.cshtml" />
     <Content Include="Views\Principal\Perfil.cshtml" />
     <Content Include="Views\Home\Registrarse.cshtml" />
-    <Content Include="Views\Users\Users.cshtml" />
+    <Content Include="Views\Users\LogIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
