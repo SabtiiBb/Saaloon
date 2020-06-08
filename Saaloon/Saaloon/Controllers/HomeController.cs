@@ -10,9 +10,11 @@ namespace Saaloon.Controllers
 {
     public class HomeController : Controller
     {
+        SessionData session = new SessionData();
         // GET: Home
         public ActionResult Index()
         {
+            session.destroySession();
             return View();
         }
 
@@ -31,7 +33,9 @@ namespace Saaloon.Controllers
             {
                 if (datos.Validacion() == true)
                 {
-                    Session["Usuario"] = datos.Usuario;
+                    session.setSession("Usuario", datos.Usuario);
+                    ViewBag.User = session.getSession("Usuario");
+                    //Session["Usuario"] = datos.Usuario;
                     Session["IdUsuario"] = datos.IdUsuario;
                     return RedirectToAction("Principal", "Principal");
                 }
@@ -45,6 +49,32 @@ namespace Saaloon.Controllers
                 return View("Login");
             }
         }
+        [AllowAnonymous]
+        public ActionResult Registrarse()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> Registrarse(Registrarse datos)
+        {
+            if (ModelState.IsValid)
+            {
+                if (datos.singIn() == false)
+                {
+                    ViewBag.Message = "El usuario o el email ya estan registrados";
+                    return View("Registrarse", datos);
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
+
+            }else
+            {
+                return View("Registrarse");
+            }
+        }
     }
 }
