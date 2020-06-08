@@ -18,15 +18,20 @@
     @foreach (var item in Model)
     {
         <div class="media">
-            <div class="media-body">
-                <h5 class="mt-0 mb-1">@Html.DisplayFor(modelItem => item.Nombre)</h5>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </div>
-            <div class="card col-sm-2 container-md">
-                <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.Foto)">
-                <p>$@Html.DisplayFor(modelItem => item.Costo)</p>
-            </div>
-
+            <div class="card media-body">              
+                    <h5 class="mt-0 mb-1">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                    @Html.DisplayFor(modelItem => item.Descripcion)                
+            </div>          
+                <div class="col-sm-2 container-md">
+                    <a href="@Url.Action("ContenidoCursoTema", "Principal", new { idCurso = item.IdCurso})">
+                        <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.Foto)">
+                       
+                        <center><br />
+                            @*<p>$@Html.DisplayFor(modelItem => item.Costo)*@
+                            <b class="btn btn-info btn-sm">Ver más...</b>
+                        </center>
+                    </a>
+                </div>
         </div>
         <br />
     }
