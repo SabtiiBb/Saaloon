@@ -7,36 +7,64 @@
 
 <div class="container">
     <div  class="card card-container">
-        <h3 class="titleLogin">Registrarse</h3>
+        <br />
+        <center>
+            <h3 class="titleLogin">Registrate</h3>
+        </center>
+        <br />
+        <center>
+            <div>
+                <img src="~/Content/img/2731070.jpg" class="imagenlogin" />
+            </div>
+        </center>
+        <br />
         @using (Html.BeginForm("Registrarse", "Home", FormMethod.Post, new { @class = "form-signin" }))
         {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div>
-                @Html.TextBoxFor(s => s.Usuario, new { @class = "form-contrl", @placeholder = "Usuario" })
-                @Html.ValidationMessageFor(s => s.Usuario, "", new { @class = "text-danger" })
-            </div>
-            <div>
-                @Html.TextBoxFor(s => s.correo, new { @class = "form-contrl", @placeholder = "correo"})
-                @Html.ValidationMessageFor(s =>  s.correo,  "",  new { @class = "text-danger" })
-            </div>
-            <div>
-                @Html.TextBoxFor(s => s.contraseña, new { @class = "form-contrl", @placeholder = "contraseña" })
-                @Html.ValidationMessageFor(s => s.contraseña, "", new { @class = "text-danger" })
-            </div>
-            <div>
-                @Html.TextBoxFor(s => s.nombre, new { @class = "form-contrl", @placeholder = "nombre" })
-                @Html.ValidationMessageFor(s => s.nombre, "", new { @class = "text-danger" })
-            </div>
-            <div>
-                @Html.TextBoxFor(s => s.apellido, new { @class = "form-contrl", @placeholder = "apellido" })
-                @Html.ValidationMessageFor(s => s.apellido, "", new { @class = "text-danger" })
-            </div>
-            <div>
-                @Html.TextBoxFor(s => s.fecha_n, new { @class = "form-contrl", @placeholder = "fecha_n" })
-                @Html.ValidationMessageFor(s => s.fecha_n, "", new { @class = "text-danger" })
-            </div>
-
-            <input type="submit" value="Registrar" class="btn btn-success"/>
+            <center>
+                <div>
+                    @Html.TextBoxFor(s => s.Usuario, new { @class = "form-control input-lg", @placeholder = "Usuario" })
+                    @Html.ValidationMessageFor(s => s.Usuario, "", new { @class = "text-danger" })
+                </div>    
+            </center>
+            <br />
+            <center>
+                <div>
+                    @Html.TextBoxFor(s => s.correo, new { @class = "form-control input-lg", @placeholder = "Correo" })
+                    @Html.ValidationMessageFor(s => s.correo, "", new { @class = "text-danger" })
+                </div>
+            </center>
+            <br />
+            <center>
+                <div>
+                    @Html.TextBoxFor(s => s.contraseña, new { @class = "form-control input-lg", @placeholder = "Contraseña" })
+                    @Html.ValidationMessageFor(s => s.contraseña, "", new { @class = "text-danger" })
+                </div>
+            </center>
+            <br />
+            <center>
+                <div>
+                    @Html.TextBoxFor(s => s.nombre, new { @class = "form-control input-lg", @placeholder = "Nombre" })
+                    @Html.ValidationMessageFor(s => s.nombre, "", new { @class = "text-danger" })
+                </div>
+            </center>
+            <br />
+            <center>
+                <div>
+                    @Html.TextBoxFor(s => s.apellido, new { @class = "form-control input-lg", @placeholder = "Apellido" })
+                    @Html.ValidationMessageFor(s => s.apellido, "", new { @class = "text-danger" })
+                </div>
+            </center>
+            <br />
+            <center>
+                <div>
+                    @Html.TextBoxFor(s => s.fecha_n, new { @class = "form-control input-lg", @placeholder = "Fecha de Nacimiento" })
+                    @Html.ValidationMessageFor(s => s.fecha_n, "", new { @class = "text-danger" })
+                </div>
+            </center>
+            <br />
+            <center><input type="submit" value="Registrar" class="btn btn-success" /></center>
+            <br />
         }
     </div>
 </div>

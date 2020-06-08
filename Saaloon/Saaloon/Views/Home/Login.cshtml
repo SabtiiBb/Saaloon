@@ -6,7 +6,12 @@
 }
 
 <br />
-<div class="loginloginlogin"> 
+<div class="loginloginlogin">
+    <br />
+    <center>
+        <h3 class="titleLogin">Iniciar Sesión</h3>
+    </center>
+    <br /> 
     <div>
         <img src="~/Content/img/2731070.jpg" class="imagenlogin"/>
     </div>
@@ -22,8 +27,6 @@
                     @Html.TextBoxFor(x => x.correo, new { @class = "form-control", @placeholder = "Correo" })
                     @Html.ValidationMessageFor(x => x.correo, "", new { @class = "text-danger" })
                 </div>
-
-                <br />
                 <br />
                 <div class="input-group mb-2 mr-sm-2">
                     <div class="input-group-prepend">

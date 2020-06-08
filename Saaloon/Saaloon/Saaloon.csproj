@@ -205,6 +205,7 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -397,6 +398,7 @@
     <Content Include="Views\Principal\ClaseTemaCurso.cshtml" />
     <Content Include="Views\Shared\_LayoutDocente.cshtml" />
     <Content Include="Views\Principal\CrearCurso.cshtml" />
+    <Content Include="Views\Users\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

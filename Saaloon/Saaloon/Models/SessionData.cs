@@ -23,7 +23,9 @@ namespace Saaloon.Models
 
         public void destroySession()
         {
+            HttpContext.Current.Session.Clear(); 
             HttpContext.Current.Session.Abandon();
+            HttpContext.Current.Session.RemoveAll();
         }
     }
 }
