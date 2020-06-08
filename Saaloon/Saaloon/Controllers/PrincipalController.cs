@@ -77,5 +77,62 @@ namespace Saaloon.Controllers
 
                 return View(ListaCursos);
         }
+
+        public ActionResult ContenidoCursoTema(int idCurso)
+        {
+            CursoContenido objCurso = new CursoContenido();
+
+            using (var dbContext = new DBPortalEduDataContext())
+            {
+                Cursos curso = (from db in dbContext.Cursos where db.IdCurso == idCurso select db).Single();
+                List<Temario> temariodelcurso = (from db in dbContext.Temario where db.IdCurso == curso.IdCurso select db).ToList();
+                Docentes docente = (from db in dbContext.Docentes where db.IdDocente == curso.idDocente select db).Single();
+
+                objCurso.IdCurso = curso.IdCurso;
+                objCurso.NombreCurso = curso.Nombre;
+                objCurso.Descripcion = curso.Descripcion;
+                objCurso.RecursosCurso = curso.Recursos;
+                objCurso.CostoCurso = Convert.ToDecimal(curso.Costo);
+                objCurso.Foto = curso.Foto;
+                objCurso.Videointro = curso.Videointro;
+
+                objCurso.TemarioM = temariodelcurso;
+
+                objCurso.IdDocente = docente.IdDocente;
+                objCurso.Nombre = docente.nombre;
+                objCurso.Apellido = docente.apellido;
+            }
+
+            return View(objCurso);
+        }
+
+        
+        public ActionResult ClaseTemaCurso(int idTema)
+        {
+            ClaseTema objClase = new ClaseTema();
+
+            using (var dbContext = new DBPortalEduDataContext())
+            {
+                Temario objtemario = (from db in dbContext.Temario where db.IdTema == idTema select db).Single();
+                List<Temario> clasetema = (from db in dbContext.Temario where db.IdCurso == objtemario.IdCurso select db).ToList();
+                Cursos cursocont = (from db in dbContext.Cursos where db.IdCurso == objtemario.IdCurso select db).Single();
+                Docentes docente = (from db in dbContext.Docentes where db.IdDocente == cursocont.idDocente select db).Single();
+
+                objClase.idTema = objtemario.IdTema;
+                objClase.IdCurso =Convert.ToInt32(objtemario.IdCurso);
+                objClase.Tema = objtemario.Tema;
+                objClase.DescripcionTema = objtemario.Descripcion;
+                objClase.FotoTema = objtemario.FotoTema;
+
+                objClase.NombreCurso = cursocont.Nombre;
+
+                objClase.idDocente = docente.IdDocente;
+                objClase.NombreDocente = docente.nombre;
+                objClase.ApellidoDocente = docente.apellido;
+
+                objClase.TemarioClase = clasetema;
+            }
+            return View(objClase);
+        }
     }
 }
