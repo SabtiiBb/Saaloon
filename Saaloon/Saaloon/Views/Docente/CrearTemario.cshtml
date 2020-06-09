@@ -1,0 +1,66 @@
+﻿@model Saaloon.Models.CrearCursoDoc
+
+@{
+    ViewBag.Title = "CrearTemario";
+    Layout = "~/Views/Shared/_LayoutDocente.cshtml";
+}
+
+
+@using (Html.BeginForm("CrearTemario", "Docente", FormMethod.Post, new { @class = "crearalumno" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <center>
+        <div>
+            <img src="~/Content/img/board-strategy-board-pngrepo-com.png" width="130px" />
+        </div>
+        <div class="crearalumno">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-row">
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-book-open"></i></div>
+                        </div>
+                        @Html.EditorFor(model => model.NombreTema, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre del tema" } })
+                        @Html.ValidationMessageFor(model => model.NombreTema, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-align-center"></i></div>
+                        </div>
+                        @Html.EditorFor(model => model.DescripcionTema, new { htmlAttributes = new { @class = "form-control", placeholder = "Descripcion del tema" } })
+                        @Html.ValidationMessageFor(model => model.DescripcionTema, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-video"></i></div>
+                        </div>
+                        @Html.EditorFor(model => model.VideoTema, new { htmlAttributes = new { @class = "form-control", placeholder = "Video del tema" } })
+                        @Html.ValidationMessageFor(model => model.VideoTema, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            @Html.HiddenFor(model => model.idTemario)
+            @Html.HiddenFor(model => model.idCurso)
+            <br />
+            <div class="claseboton">
+                <div>
+                    <div>
+                        <input type="submit" value="Agregar nuevo tema" class="btn btn-success" />
+                    </div>
+                    <br />
+                    <div class="btn btn-light">
+                        @Html.ActionLink("Finalizar", "MisCurso")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+}

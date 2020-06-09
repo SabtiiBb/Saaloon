@@ -12,17 +12,24 @@ namespace Saaloon.Controllers
         SessionData session = new SessionData();
         // GET: Users
 
-        public ActionResult Users()
+        public ActionResult LogIn()
         {
-            ViewBag.User = session.getSession("Usuario");
-            if (!String.IsNullOrEmpty(ViewBag.User))
+
+            string UType = session.getSession("TipoUsuario");
+
+            if(UType == "2")
+            {
+                return RedirectToAction("Index", "Doncente");
+            }else if(UType == "3")
             {
                 return RedirectToAction("Principal", "Principal");
             }
             else
             {
-                return View();
+                ViewBag.Message = "Error";
             }
+
+            return View(ViewBag.Message);
         }
 
         public ActionResult Close()

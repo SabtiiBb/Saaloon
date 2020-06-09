@@ -203,9 +203,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBPortalEdu.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DocenteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Filters\Access.cs" />
+    <Compile Include="Filters\TAccess.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,9 +234,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\2731070.jpg" />
+    <Content Include="Content\img\Asset 4%402x.png" />
     <Content Include="Content\img\banner1.png" />
     <Content Include="Content\img\banner2.png" />
     <Content Include="Content\img\banner3.png" />
+    <Content Include="Content\img\board-strategy-board-pngrepo-com.png" />
+    <Content Include="Content\img\books-pngrepo-com.png" />
     <Content Include="Content\img\cursos-de-programacion-en-Fundamentos-de-la-programación-en-Java.jpg" />
     <Content Include="Content\img\cursos-programación-para-juegos.jpg" />
     <Content Include="Content\img\Imagen1.jpg" />
@@ -272,12 +278,12 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="packages.config" />
     <Content Include="Context\DBPortalEdu.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DBPortalEdu.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -390,15 +396,18 @@
     <Content Include="Views\Shared\_LayoutPrincipal.cshtml" />
     <Content Include="Views\Principal\Principal.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Principal\ListadoCursos.cshtml" />
     <Content Include="Views\Principal\Perfil.cshtml" />
-    <Content Include="Views\Home\Registrarse.cshtml" />
     <Content Include="Views\Principal\ContenidoCursoTema.cshtml" />
     <Content Include="Views\Principal\ClaseTemaCurso.cshtml" />
     <Content Include="Views\Shared\_LayoutDocente.cshtml" />
     <Content Include="Views\Principal\CrearCurso.cshtml" />
-    <Content Include="Views\Users\Users.cshtml" />
+    <Content Include="Views\Docente\CrearCurso.cshtml" />
+    <Content Include="Views\Docente\CrearTemario.cshtml" />
+    <Content Include="Views\Docente\PerfilDocente.cshtml" />
+    <Content Include="Views\Docente\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Registrarse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -411,9 +420,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Cursos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Context\DBPortalEdu.dbml.layout">
       <DependentUpon>DBPortalEdu.dbml</DependentUpon>
