@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace Saaloon.Models
+{
+    public class CrearCursoDoc
+    {
+        [Required(ErrorMessage = "El campo nombre está vacio")]
+        [DisplayName("Nombre: ")]
+        [MaxLength(30, ErrorMessage = "El nombre no debe exceder los 30 caracteres")]
+        public String Nombre { get; set; }
+
+        [Required(ErrorMessage = "El campo descripcion está vacio")]
+        [MaxLength(200, ErrorMessage = "La descripcion no debe exceder los 200 caracteres")]
+        public String Descripcion { get; set; }
+
+        [Required(ErrorMessage = "El campo recursos está vacio")]
+        [MaxLength(30, ErrorMessage = "El recurso no debe exceder los 30 caracteres")]
+        public String Recursos { get; set; }
+
+        [Required(ErrorMessage = "El campo costo está vacio")]
+        public decimal Costo { get; set; }
+
+        [Required(ErrorMessage = "El campo temario está vacio")]
+        public int idTemario { get; set; }
+
+        [Required(ErrorMessage = "El campo docente está vacio")]
+        public int idDocente { get; set; }
+
+        [Required(ErrorMessage = "El campo Foto está vacio")]
+        public String Foto { get; set; }
+
+        public String VideoIntro { get; set; }
+
+        public int idCurso { get; set; }
+
+        public String NombreTema { get; set; }
+
+        public String DescripcionTema { get; set; }
+
+        public String VideoTema { get; set; }
+    }
+}

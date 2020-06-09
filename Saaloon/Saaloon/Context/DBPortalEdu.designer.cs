@@ -54,16 +54,16 @@ namespace Saaloon.Context
     partial void InsertPagos(Pagos instance);
     partial void UpdatePagos(Pagos instance);
     partial void DeletePagos(Pagos instance);
-    partial void InsertTemario(Temario instance);
-    partial void UpdateTemario(Temario instance);
-    partial void DeleteTemario(Temario instance);
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
+    partial void InsertTemario(Temario instance);
+    partial void UpdateTemario(Temario instance);
+    partial void DeleteTemario(Temario instance);
     #endregion
 		
 		public DBPortalEduDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PortalEduConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PortalEduConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -156,19 +156,51 @@ namespace Saaloon.Context
 			}
 		}
 		
-		public System.Data.Linq.Table<Temario> Temario
-		{
-			get
-			{
-				return this.GetTable<Temario>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Usuario> Usuario
 		{
 			get
 			{
 				return this.GetTable<Usuario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Inscripciones_del_Curso> Inscripciones_del_Curso
+		{
+			get
+			{
+				return this.GetTable<Inscripciones_del_Curso>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ViewAlumnos> ViewAlumnos
+		{
+			get
+			{
+				return this.GetTable<ViewAlumnos>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ViewCurso> ViewCurso
+		{
+			get
+			{
+				return this.GetTable<ViewCurso>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ViewDocentes> ViewDocentes
+		{
+			get
+			{
+				return this.GetTable<ViewDocentes>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Temario> Temario
+		{
+			get
+			{
+				return this.GetTable<Temario>();
 			}
 		}
 		
@@ -2524,7 +2556,6 @@ namespace Saaloon.Context
 			}
 		}
 	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
 	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2791,6 +2822,701 @@ namespace Saaloon.Context
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Inscripciones_del_Curso")]
+	public partial class Inscripciones_del_Curso
+	{
+		
+		private string _Nombre_del_Alumno;
+		
+		private string _Apellido_del_Alumno;
+		
+		private string _Curso;
+		
+		public Inscripciones_del_Curso()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Nombre del Alumno]", Storage="_Nombre_del_Alumno", DbType="VarChar(30)")]
+		public string Nombre_del_Alumno
+		{
+			get
+			{
+				return this._Nombre_del_Alumno;
+			}
+			set
+			{
+				if ((this._Nombre_del_Alumno != value))
+				{
+					this._Nombre_del_Alumno = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Apellido del Alumno]", Storage="_Apellido_del_Alumno", DbType="VarChar(30)")]
+		public string Apellido_del_Alumno
+		{
+			get
+			{
+				return this._Apellido_del_Alumno;
+			}
+			set
+			{
+				if ((this._Apellido_del_Alumno != value))
+				{
+					this._Apellido_del_Alumno = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_ModificaNotasResult
+	{
+		
+		private string _Mensaje;
+		
+		public SP_ModificaNotasResult()
+		{
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Curso", DbType="VarChar(30)")]
+		public string Curso
+		{
+			get
+			{
+				return this._Curso;
+			}
+			set
+			{
+				if ((this._Curso != value))
+				{
+					this._Curso = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewAlumnos")]
+	public partial class ViewAlumnos
+	{
+		
+		private int _IdAlumno;
+		
+		private string _Nombre;
+		
+		private string _Apellido;
+		
+		private System.Nullable<System.DateTime> _Fecha_de_Nacimiento;
+		
+		private System.Nullable<char> _Género;
+		
+		private string _Usuario;
+		
+		private string _Correo;
+		
+		private System.Nullable<int> _Tipo_Usuario;
+		
+		public ViewAlumnos()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdAlumno", DbType="Int NOT NULL")]
+		public int IdAlumno
+		{
+			get
+			{
+				return this._IdAlumno;
+			}
+			set
+			{
+				if ((this._IdAlumno != value))
+				{
+					this._IdAlumno = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(30)")]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this._Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apellido", DbType="VarChar(30)")]
+		public string Apellido
+		{
+			get
+			{
+				return this._Apellido;
+			}
+			set
+			{
+				if ((this._Apellido != value))
+				{
+					this._Apellido = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Fecha de Nacimiento]", Storage="_Fecha_de_Nacimiento", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Fecha_de_Nacimiento
+		{
+			get
+			{
+				return this._Fecha_de_Nacimiento;
+			}
+			set
+			{
+				if ((this._Fecha_de_Nacimiento != value))
+				{
+					this._Fecha_de_Nacimiento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Género", DbType="Char(1)")]
+		public System.Nullable<char> Género
+		{
+			get
+			{
+				return this._Género;
+			}
+			set
+			{
+				if ((this._Género != value))
+				{
+					this._Género = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Usuario", DbType="VarChar(60)")]
+		public string Usuario
+		{
+			get
+			{
+				return this._Usuario;
+			}
+			set
+			{
+				if ((this._Usuario != value))
+				{
+					this._Usuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Correo", DbType="VarChar(60)")]
+		public string Correo
+		{
+			get
+			{
+				return this._Correo;
+			}
+			set
+			{
+				if ((this._Correo != value))
+				{
+					this._Correo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Tipo Usuario]", Storage="_Tipo_Usuario", DbType="Int")]
+		public System.Nullable<int> Tipo_Usuario
+		{
+			get
+			{
+				return this._Tipo_Usuario;
+			}
+			set
+			{
+				if ((this._Tipo_Usuario != value))
+				{
+					this._Tipo_Usuario = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewCurso")]
+	public partial class ViewCurso
+	{
+		
+		private int _IdCurso;
+		
+		private string _Nombre;
+		
+		private string _Descripción;
+		
+		private string _Recursos;
+		
+		private System.Nullable<decimal> _Costo;
+		
+		private string _Nombre_Docente;
+		
+		public ViewCurso()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCurso", DbType="Int NOT NULL")]
+		public int IdCurso
+		{
+			get
+			{
+				return this._IdCurso;
+			}
+			set
+			{
+				if ((this._IdCurso != value))
+				{
+					this._IdCurso = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(30)")]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this._Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripción", DbType="VarChar(200)")]
+		public string Descripción
+		{
+			get
+			{
+				return this._Descripción;
+			}
+			set
+			{
+				if ((this._Descripción != value))
+				{
+					this._Descripción = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recursos", DbType="VarChar(30)")]
+		public string Recursos
+		{
+			get
+			{
+				return this._Recursos;
+			}
+			set
+			{
+				if ((this._Recursos != value))
+				{
+					this._Recursos = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Costo", DbType="Money")]
+		public System.Nullable<decimal> Costo
+		{
+			get
+			{
+				return this._Costo;
+			}
+			set
+			{
+				if ((this._Costo != value))
+				{
+					this._Costo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Nombre Docente]", Storage="_Nombre_Docente", DbType="VarChar(30)")]
+		public string Nombre_Docente
+		{
+			get
+			{
+				return this._Nombre_Docente;
+			}
+			set
+			{
+				if ((this._Nombre_Docente != value))
+				{
+					this._Nombre_Docente = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewDocentes")]
+	public partial class ViewDocentes
+	{
+		
+		private int _IdDocente;
+		
+		private string _Nombre;
+		
+		private string _Apellido;
+		
+		private System.Nullable<System.DateTime> _Fecha_de_Nacimiento;
+		
+		private System.Nullable<char> _Género;
+		
+		private string _Usuario;
+		
+		private string _Correo;
+		
+		private System.Nullable<int> _Tipo_Usuario;
+		
+		public ViewDocentes()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdDocente", DbType="Int NOT NULL")]
+		public int IdDocente
+		{
+			get
+			{
+				return this._IdDocente;
+			}
+			set
+			{
+				if ((this._IdDocente != value))
+				{
+					this._IdDocente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(30)")]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this._Nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apellido", DbType="VarChar(30)")]
+		public string Apellido
+		{
+			get
+			{
+				return this._Apellido;
+			}
+			set
+			{
+				if ((this._Apellido != value))
+				{
+					this._Apellido = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Fecha de Nacimiento]", Storage="_Fecha_de_Nacimiento", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Fecha_de_Nacimiento
+		{
+			get
+			{
+				return this._Fecha_de_Nacimiento;
+			}
+			set
+			{
+				if ((this._Fecha_de_Nacimiento != value))
+				{
+					this._Fecha_de_Nacimiento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Género", DbType="Char(1)")]
+		public System.Nullable<char> Género
+		{
+			get
+			{
+				return this._Género;
+			}
+			set
+			{
+				if ((this._Género != value))
+				{
+					this._Género = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Usuario", DbType="VarChar(60)")]
+		public string Usuario
+		{
+			get
+			{
+				return this._Usuario;
+			}
+			set
+			{
+				if ((this._Usuario != value))
+				{
+					this._Usuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Correo", DbType="VarChar(60)")]
+		public string Correo
+		{
+			get
+			{
+				return this._Correo;
+			}
+			set
+			{
+				if ((this._Correo != value))
+				{
+					this._Correo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Tipo Usuario]", Storage="_Tipo_Usuario", DbType="Int")]
+		public System.Nullable<int> Tipo_Usuario
+		{
+			get
+			{
+				return this._Tipo_Usuario;
+			}
+			set
+			{
+				if ((this._Tipo_Usuario != value))
+				{
+					this._Tipo_Usuario = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Temario")]
+	public partial class Temario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdTema;
+		
+		private string _Tema;
+		
+		private string _Descripcion;
+		
+		private string _FotoTema;
+		
+		private System.Nullable<int> _IdCurso;
+		
+		private EntityRef<Cursos> _Cursos;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdTemaChanging(int value);
+    partial void OnIdTemaChanged();
+    partial void OnTemaChanging(string value);
+    partial void OnTemaChanged();
+    partial void OnDescripcionChanging(string value);
+    partial void OnDescripcionChanged();
+    partial void OnFotoTemaChanging(string value);
+    partial void OnFotoTemaChanged();
+    partial void OnIdCursoChanging(System.Nullable<int> value);
+    partial void OnIdCursoChanged();
+    #endregion
+		
+		public Temario()
+		{
+			this._Cursos = default(EntityRef<Cursos>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdTema", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdTema
+		{
+			get
+			{
+				return this._IdTema;
+			}
+			set
+			{
+				if ((this._IdTema != value))
+				{
+					this.OnIdTemaChanging(value);
+					this.SendPropertyChanging();
+					this._IdTema = value;
+					this.SendPropertyChanged("IdTema");
+					this.OnIdTemaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tema", DbType="VarChar(30)")]
+		public string Tema
+		{
+			get
+			{
+				return this._Tema;
+			}
+			set
+			{
+				if ((this._Tema != value))
+				{
+					this.OnTemaChanging(value);
+					this.SendPropertyChanging();
+					this._Tema = value;
+					this.SendPropertyChanged("Tema");
+					this.OnTemaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(200)")]
+		public string Descripcion
+		{
+			get
+			{
+				return this._Descripcion;
+			}
+			set
+			{
+				if ((this._Descripcion != value))
+				{
+					this.OnDescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._Descripcion = value;
+					this.SendPropertyChanged("Descripcion");
+					this.OnDescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FotoTema", DbType="VarChar(MAX)")]
+		public string FotoTema
+		{
+			get
+			{
+				return this._FotoTema;
+			}
+			set
+			{
+				if ((this._FotoTema != value))
+				{
+					this.OnFotoTemaChanging(value);
+					this.SendPropertyChanging();
+					this._FotoTema = value;
+					this.SendPropertyChanged("FotoTema");
+					this.OnFotoTemaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCurso", DbType="Int")]
+		public System.Nullable<int> IdCurso
+		{
+			get
+			{
+				return this._IdCurso;
+			}
+			set
+			{
+				if ((this._IdCurso != value))
+				{
+					if (this._Cursos.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdCursoChanging(value);
+					this.SendPropertyChanging();
+					this._IdCurso = value;
+					this.SendPropertyChanged("IdCurso");
+					this.OnIdCursoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cursos_Temario", Storage="_Cursos", ThisKey="IdCurso", OtherKey="IdCurso", IsForeignKey=true)]
+		public Cursos Cursos
+		{
+			get
+			{
+				return this._Cursos.Entity;
+			}
+			set
+			{
+				Cursos previousValue = this._Cursos.Entity;
+				if (((previousValue != value) 
+							|| (this._Cursos.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Cursos.Entity = null;
+						previousValue.Temario.Remove(this);
+					}
+					this._Cursos.Entity = value;
+					if ((value != null))
+					{
+						value.Temario.Add(this);
+						this._IdCurso = value.IdCurso;
+					}
+					else
+					{
+						this._IdCurso = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Cursos");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	public partial class SP_ModificaAlumnoResult
 	{
 		
@@ -2843,32 +3569,6 @@ namespace Saaloon.Context
 		}
 	}
 	
-	public partial class SP_ModificaNotasResult
-	{
-		
-		private string _Mensaje;
-		
-		public SP_ModificaNotasResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="VarChar(31) NOT NULL", CanBeNull=false)]
-		public string Mensaje
-		{
-			get
-			{
-				return this._Mensaje;
-			}
-			set
-			{
-				if ((this._Mensaje != value))
-				{
-					this._Mensaje = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_ModificaTemariosResult
 	{
 		
@@ -2901,6 +3601,32 @@ namespace Saaloon.Context
 		private string _Mensaje;
 		
 		public SP_ModificaUsuarioResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mensaje", DbType="VarChar(31) NOT NULL", CanBeNull=false)]
+		public string Mensaje
+		{
+			get
+			{
+				return this._Mensaje;
+			}
+			set
+			{
+				if ((this._Mensaje != value))
+				{
+					this._Mensaje = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_ModificaDocenteResult
+	{
+		
+		private string _Mensaje;
+		
+		public SP_ModificaDocenteResult()
 		{
 		}
 		

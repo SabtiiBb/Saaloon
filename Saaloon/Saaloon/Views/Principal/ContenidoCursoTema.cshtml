@@ -1,0 +1,70 @@
+﻿@model Saaloon.Models.CursoContenido
+
+@{
+    ViewBag.Title = "ContenidoCursoTema";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="grid-container">
+            <div class="NombreCurso">
+                <center>
+                    <h2>
+                        <b>
+                            @Html.DisplayFor(model => model.NombreCurso)
+                        </b>                    
+                    </h2>
+                </center>
+            </div>
+            <div class="precio">                
+                 <h3><b>Precio: $</b>@Html.DisplayFor(model => model.CostoCurso)<a class="myButton" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Añadir al carrito</a></h3>
+               
+            </div>
+            <div class="video">
+                <iframe width="100%" height="100%" src="@Html.DisplayFor(model => model.Videointro)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="descripcion">
+                <h5><b>Descripción: </b></h5>
+                @Html.DisplayFor(model => model.Descripcion)
+            </div>
+            <div class="recursos">
+                <h5><b>Recursos: </b></h5>
+                @Html.DisplayFor(model => model.RecursosCurso)
+            </div>
+            <div class="docente">
+                <h5><b>Nombre Docente: </b></h5>
+                @Html.DisplayFor(model => model.Nombre) @Html.DisplayFor(model => model.Apellido)
+            </div>
+        </div>        
+                @Html.HiddenFor(model => model.IdCurso)
+                @Html.HiddenFor(model => model.IdDocente)
+    <br/>
+    <hr />
+    <table class="table table-hover">
+        <tr>
+            <th colspan="3" class="table-dark">
+                <center>
+                    <h2>
+                        @Html.DisplayFor(model => model.NombreCurso)
+                    </h2>
+                </center>
+            </th>
+        </tr>
+        @foreach (var item in Model.TemarioM)
+        {
+            <tr class="contenidotema">                
+                    <td class="temna"><b>@Html.DisplayFor(modelItem => item.Tema)</b></td>
+                    <td class="descripciontema">@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                <td>
+                <a class="btn btn-warning" href="@Url.Action("ClaseTemaCurso", "Principal", new { idTema = item.IdTema })">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+                </td>                
+            </tr>
+        }
+
+    </table>
+}

@@ -4,13 +4,12 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
-
 
 namespace Saaloon.Models
 {
-    public class PerfilVM
+    public class PerfilDocente
     {
+        public int IdDocente { get; set; }
         public string Usuario1 { get; set; }
         public string correo { get; set; }
         [Required(ErrorMessage = "Este Campo Esta Vacio")]
@@ -23,12 +22,10 @@ namespace Saaloon.Models
         [DisplayName("Fecha de Nacimiento: ")]
         [DataType(DataType.Date)]
         public string fecha_n { get; set; }
-        [Required(ErrorMessage = "Seleccione un Genero")]
+        [Required(ErrorMessage = "Seleccione un Género")]
         [DisplayName("Genero: ")]
         public String genero { get; set; }
         public int idUsuario { get; set; }
-
-
 
     }
 }
