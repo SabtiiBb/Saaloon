@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PortalEdu" Class="DBPortalEduDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=PortalEdu;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PortalEduConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-JH40SFF\SQLEXPRESS;Initial Catalog=PortalEdu;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PortalEduConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Alumno" Member="Alumno">
     <Type Name="Alumno">
       <Column Name="IdAlumno" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -101,8 +101,8 @@
   <Table Name="dbo.Temario" Member="Temario">
     <Type Name="Temario">
       <Column Name="IdTema" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Tema" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Tema" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
       <Column Name="FotoTema" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="IdCurso" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Cursos_Temario" Member="Cursos" ThisKey="IdCurso" OtherKey="IdCurso" Type="Cursos" IsForeignKey="true" />

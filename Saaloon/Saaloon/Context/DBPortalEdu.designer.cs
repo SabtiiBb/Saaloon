@@ -63,7 +63,7 @@ namespace Saaloon.Context
     #endregion
 		
 		public DBPortalEduDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PortalEduConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PortalEduConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -2386,7 +2386,7 @@ namespace Saaloon.Context
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tema", DbType="VarChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tema", DbType="VarChar(100)")]
 		public string Tema
 		{
 			get
@@ -2406,7 +2406,7 @@ namespace Saaloon.Context
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(400)")]
 		public string Descripcion
 		{
 			get
