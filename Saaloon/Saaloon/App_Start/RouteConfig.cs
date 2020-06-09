@@ -22,9 +22,9 @@ namespace Saaloon
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Users",
+                name: "Login",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Users", action = "Users", id = UrlParameter.Optional }
+                defaults: new { controller = "Users", action = "LogIn", id = UrlParameter.Optional }
             );
         }
     }

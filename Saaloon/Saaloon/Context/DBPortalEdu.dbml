@@ -98,6 +98,16 @@
       <Association Name="Cursos_Pagos" Member="Cursos" ThisKey="IdCurso" OtherKey="IdCurso" Type="Cursos" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Temario" Member="Temario">
+    <Type Name="Temario">
+      <Column Name="IdTema" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tema" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="FotoTema" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="IdCurso" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Cursos_Temario" Member="Cursos" ThisKey="IdCurso" OtherKey="IdCurso" Type="Cursos" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Usuario" Member="Usuario">
     <Type Name="Usuario">
       <Column Name="IdUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
