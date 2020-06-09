@@ -34,7 +34,7 @@ namespace Saaloon.Models
         public String nombre { get; set; }
         public String apellido { get; set; }
         public DateTime fecha_n { get; set; }
-        //public  String genero { get; set; }
+        public  String genero { get; set; }
 
 
         //DBPortalEduDataContext user = new DBPortalEduDataContext();

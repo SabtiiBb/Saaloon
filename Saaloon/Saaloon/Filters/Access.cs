@@ -13,10 +13,11 @@ namespace Saaloon.Filters
             //Si Variable de Session is Null, return Login Or Type isn't a Student
 
             var usuario = HttpContext.Current.Session["Usuario"];
-            string tipo = HttpContext.Current.Session["TipoUsuario"].ToString();
-            if(usuario == null || tipo != "3")
+            var tipo = HttpContext.Current.Session["TipoUsuario"];
+            var tipo3 = HttpContext.Current.Session["Tipo3"];
+            if(usuario == null || tipo != tipo3)
             {
-                filterContext.Result = new RedirectResult("~/Users/LogIn");
+                filterContext.Result = new RedirectResult("~/Home/Login");
             }
 
             base.OnActionExecuted(filterContext);
