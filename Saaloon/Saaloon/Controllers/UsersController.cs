@@ -19,7 +19,7 @@ namespace Saaloon.Controllers
 
             if(UType == "2")
             {
-                return RedirectToAction("Index", "Doncente");
+                return RedirectToAction("Index", "Docente");
             }else if(UType == "3")
             {
                 return RedirectToAction("Principal", "Principal");

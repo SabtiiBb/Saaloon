@@ -4854,7 +4854,8 @@ input[type="button"].btn-block {
 .card-img-bottom {
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 100%;
+  margin:auto;
+  width: 80%;
 }
 
 .card-img,
@@ -10472,4 +10473,52 @@ table.MisDatos{
     margin:auto;
     padding: 1rem;
     width:50%;
+}
+
+.BannerDocente > h2{
+    background-color:#eeeeee;
+    padding:1rem;
+    margin:1rem;
+    font-weight:bolder;
+    color:#32e0c4;
+}
+
+.grid-container-docente-curso {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.1fr;
+  grid-template-rows: 0.2fr 0.7fr 0.2fr;
+  gap: 1px 1px;
+  margin:1.5rem;
+  border: solid 2px grey;
+  border-right:none;
+  border-radius:10px;
+}
+
+.grid-container-docente-curso > div{
+    padding:1rem;
+
+}
+.foto-docente-curso { grid-area: 1 / 1 / 4 / 2;
+                      border-right:solid 2px grey;
+}
+
+.tema-docente-curso {
+     grid-area: 1 / 2 / 2 / 4;
+}
+
+.tema-docente-curso > h4{
+   font-weight:bolder;
+}
+.descripcio-docente-curso { grid-area: 2 / 2 / 3 / 4; }
+
+.precio-docente-curso { grid-area: 3 / 2 / 4 / 4; }
+
+.botonvertemario-docente-curso { 
+    grid-area: 1 / 4 / 4 / 5; 
+}
+
+.botonvertemario-docente-curso > a{ 
+    color:white;
+    text-decoration:none;
+    
 }
