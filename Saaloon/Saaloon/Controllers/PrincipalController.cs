@@ -14,7 +14,7 @@ namespace Saaloon.Controllers
     {
         SessionData Sess = new SessionData();
         // GET: Principal
-        [TAccess]
+        [Access]
         public ActionResult Principal()
         {
             List<Context.Cursos> Listado;

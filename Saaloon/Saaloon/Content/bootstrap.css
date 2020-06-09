@@ -10299,7 +10299,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 .formulariogrupo{
    margin: auto;
-   width: 30%;
+   text-align:  center;
+    width: 250px;
 }
 
 .Imagenperfilvc{
@@ -10473,3 +10474,65 @@ table.MisDatos{
     padding: 1rem;
     width:50%;
 }
+
+.BannerDocente > h2{
+    background-color:#eeeeee;
+    padding:1rem;
+    margin:1rem;
+    font-weight:bolder;
+    color:#32e0c4;
+}
+
+ 
+
+.grid-container-docente-curso {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.1fr;
+  grid-template-rows: 0.2fr 0.7fr 0.2fr;
+  gap: 1px 1px;
+  margin:1.5rem;
+  border: solid 2px grey;
+  border-right:none;
+  border-radius:10px;
+}
+
+ 
+
+.grid-container-docente-curso > div{
+    padding:1rem;
+
+ 
+
+}
+.foto-docente-curso { grid-area: 1 / 1 / 4 / 2;
+                      border-right:solid 2px grey;
+}
+
+ 
+
+.tema-docente-curso { grid-area: 1 / 2 / 2 / 4; }
+
+ 
+
+.descripcio-docente-curso { grid-area: 2 / 2 / 3 / 4; }
+
+ 
+
+.precio-docente-curso { grid-area: 3 / 2 / 4 / 4; }
+
+ 
+
+.botonvertemario-docente-curso { 
+    grid-area: 1 / 4 / 4 / 5; 
+}
+
+ 
+
+.botonvertemario-docente-curso > a{ 
+    color:white;
+    text-decoration:none;
+    
+}
+
+
+

@@ -1,0 +1,34 @@
+﻿@model Saaloon.Models.ListaCurso
+
+@{
+    ViewBag.Title = "ListaTemarios";
+    Layout = "~/Views/Shared/_LayoutDocente.cshtml";
+}
+<br />
+<h2>@Html.DisplayFor(model => model.NombreCurso)</h2>
+<br />
+<table class="table table-striped">
+    <tr style="text-align:center"> 
+        <th class="table-dark">
+            Tema
+        </th>
+
+        <th class="table-dark">
+            Descripción
+        </th>
+    </tr>
+
+@foreach (var item in Model.TemarioM) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tema)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+    </tr>
+}
+
+</table>
+<br />
+<br />

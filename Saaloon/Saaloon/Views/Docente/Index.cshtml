@@ -5,66 +5,18 @@
     Layout = "~/Views/Shared/_LayoutDocente.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Recursos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Costo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idDocente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Videointro)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recursos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Costo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idDocente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Videointro)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCurso }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCurso }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCurso })
-        </td>
-    </tr>
+<div class="BannerDocente">
+    <h2>
+        <img src="~/Content/img/desk-classroom-pngrepo-com.png" height="100em" />  Mis Cursos
+    </h2>
+</div>
+@foreach (var item in Model)
+{
+    <div class="grid-container-docente-curso">
+        <div class="foto-docente-curso"><img class="img-fluid" src="@Html.DisplayFor(modelItem => item.Foto)"></div>
+        <div class="tema-docente-curso"><h4>@Html.DisplayFor(modelItem => item.Nombre)</h4></div>
+        <div class="descripcio-docente-curso">@Html.DisplayFor(modelItem => item.Descripcion)</div>
+        <div class="precio-docente-curso">$@Html.DisplayFor(modelItem => item.Costo)</div>
+        <div class="botonvertemario-docente-curso btn btn-info"><a href="@Url.Action("ListaTemarios", "Docente", new { idCurso = item.IdCurso })"><i class="fas fa-angle-double-right"></i></a></div>
+    </div>
 }
-
-</table>
