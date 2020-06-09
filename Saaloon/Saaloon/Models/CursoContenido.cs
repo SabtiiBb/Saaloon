@@ -8,7 +8,7 @@ namespace Saaloon.Models
 {
     public class CursoContenido
     {
-        public int IdCurso { get; set; }
+        public int IdCurso { get; set; } 
         public String NombreCurso { get; set; }
         public String Descripcion { get; set; }
         public String RecursosCurso { get; set; }
@@ -20,7 +20,7 @@ namespace Saaloon.Models
         //public String Tema { get; set; }
         //public String DescripcionTema { get; set; }
         //public String FotoTema { get; set; }
-        public List<Temario> TemarioM{ get; set; }
+        public List<Temario> TemarioM{ get; set; } 
 
         public int IdDocente { get; set; }
         public String Nombre { get; set; }

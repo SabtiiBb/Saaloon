@@ -217,6 +217,7 @@
     <Compile Include="Models\CrearCursoDoc.cs" />
     <Compile Include="Models\CursoContenido.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ListaCurso.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PerfilDocente.cs" />
@@ -238,6 +239,7 @@
     <Content Include="Content\img\banner1.png" />
     <Content Include="Content\img\banner2.png" />
     <Content Include="Content\img\banner3.png" />
+    <Content Include="Content\img\bannervertical.png" />
     <Content Include="Content\img\board-strategy-board-pngrepo-com.png" />
     <Content Include="Content\img\books-pngrepo-com.png" />
     <Content Include="Content\img\cursos-de-programacion-en-Fundamentos-de-la-programación-en-Java.jpg" />
@@ -409,6 +411,7 @@
     <Content Include="Views\Docente\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registrarse.cshtml" />
+    <Content Include="Views\Docente\ListaTemarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
