@@ -4,19 +4,17 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutDocente.cshtml";
 }
-
 <div class="BannerDocente">
     <h2>
-        <img src="~/Content/img/desk-classroom-pngrepo-com.png" height="100em" />  Mis Cursos
-    </h2>
+        <img src="~/Content/img/desk-classroom-pngrepo-com.png" height="100em"/>  Mis Cursos</h2>
 </div>
-@foreach (var item in Model)
-{
-    <div class="grid-container-docente-curso">
-        <div class="foto-docente-curso"><img class="img-fluid" src="@Html.DisplayFor(modelItem => item.Foto)"></div>
-        <div class="tema-docente-curso"><h4>@Html.DisplayFor(modelItem => item.Nombre)</h4></div>
-        <div class="descripcio-docente-curso">@Html.DisplayFor(modelItem => item.Descripcion)</div>
-        <div class="precio-docente-curso">$@Html.DisplayFor(modelItem => item.Costo)</div>
-        <div class="botonvertemario-docente-curso btn btn-info"><a href="@Url.Action("ListaTemarios", "Docente", new { idCurso = item.IdCurso })"><i class="fas fa-angle-double-right"></i></a></div>
-    </div>
-}
+        @foreach (var item in Model)
+        {
+            <div class="grid-container-docente-curso">
+                <div class="foto-docente-curso"><img class="img-fluid" src="@Html.DisplayFor(modelItem => item.Foto)"></div>
+                <div class="tema-docente-curso"><h4>@Html.DisplayFor(modelItem => item.Nombre)</h4></div>
+                <div class="descripcio-docente-curso">@Html.DisplayFor(modelItem => item.Descripcion)</div>
+                <div class="precio-docente-curso">$@Html.DisplayFor(modelItem => item.Costo)</div>
+                <div class="botonvertemario-docente-curso btn btn-info"><a href="@Url.Action("ListaTemarios", "Docente", new { idCurso = item.IdCurso })"><i class="fas fa-angle-double-right"></i></a></div>
+            </div>
+        }

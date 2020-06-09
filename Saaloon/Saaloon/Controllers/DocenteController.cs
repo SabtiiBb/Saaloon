@@ -14,20 +14,22 @@ namespace Saaloon.Controllers
     {
         SessionData Sess = new SessionData();
         // GET: Docente
-        [TAccess]
         public ActionResult Index()
         {
-            List<Cursos> MisCursos;
+            List<Cursos> MisCursos = new List<Cursos>();
 
-            using (var dbContext = new DBPortalEduDataContext())
+            try
             {
-                Docentes doc = (from db in dbContext.Docentes where db.idUsuario == Convert.ToInt32(Sess.getSession("idUsuario")) select db).Single();
-                MisCursos = (from db in dbContext.Cursos where db.idDocente == doc.IdDocente select db).ToList();
-            }
+                using (var dbContext = new DBPortalEduDataContext())
+                {
+                    Docentes doc = (from db in dbContext.Docentes where db.idUsuario == Convert.ToInt32(Sess.getSession("idUsuario")) select db).Single();
+                    MisCursos = (from db in dbContext.Cursos where db.idDocente == doc.IdDocente select db).ToList();
+                }
+            }catch (Exception e) { }
+
                 return View(MisCursos);
         }
 
-        [TAccess]
         [HttpGet]
         public ActionResult PerfilDocente()
         {
@@ -37,17 +39,23 @@ namespace Saaloon.Controllers
             Docentes Doc = new Docentes();
             Usuario User = new Usuario();
 
-            using (var dbContext = new DBPortalEduDataContext())
+            try
             {
-                User = (from db in dbContext.Usuario where db.IdUsuario == Model.idUsuario select db).Single();
-                Doc = (from db in dbContext.Docentes where db.idUsuario == Model.idUsuario select db).Single();
+                using (var dbContext = new DBPortalEduDataContext())
+                {
+                    User = (from db in dbContext.Usuario where db.IdUsuario == Model.idUsuario select db).Single();
+                    Doc = (from db in dbContext.Docentes where db.idUsuario == Model.idUsuario select db).Single();
 
-                Model.Usuario1 = User.Usuario1;
-                Model.correo = User.correo;
-                Model.nombre = Doc.nombre;
-                Model.apellido = Doc.apellido;
-                Model.fecha_n = Doc.fecha_n.ToString();
-                Model.genero = (Doc.genero).ToString() == "M" ? "Masculino" : "Femenino";
+                    Model.Usuario1 = User.Usuario1;
+                    Model.correo = User.correo;
+                    Model.nombre = Doc.nombre;
+                    Model.apellido = Doc.apellido;
+                    Model.fecha_n = Doc.fecha_n.ToString();
+                    Model.genero = (Doc.genero).ToString() == "M" ? "Masculino" : "Femenino";
+                }
+            }catch(Exception e)
+            {
+                
             }
 
             return View(Model);
@@ -71,7 +79,6 @@ namespace Saaloon.Controllers
             return RedirectToAction("PerfilDocente", "Docente");
         }
 
-        [TAccess]
         [HttpGet]
         public ActionResult CrearCurso()
         {
@@ -79,14 +86,17 @@ namespace Saaloon.Controllers
 
             List<SelectListItem> lst = new List<SelectListItem>();
 
-            using (var dbContext = new DBPortalEduDataContext())
+            try
             {
-                docentes = (from db in dbContext.Docentes select db).ToList();
-                foreach (var item in docentes)
+                using (var dbContext = new DBPortalEduDataContext())
                 {
-                    lst.Add(new SelectListItem() { Text = item.nombre, Value = item.IdDocente.ToString() });
+                    docentes = (from db in dbContext.Docentes select db).ToList();
+                    foreach (var item in docentes)
+                    {
+                        lst.Add(new SelectListItem() { Text = item.nombre, Value = item.IdDocente.ToString() });
+                    }
                 }
-            }
+            }catch(Exception e) { }
             ViewBag.docente = lst;
 
             return View();
@@ -118,7 +128,6 @@ namespace Saaloon.Controllers
             return RedirectToAction("CrearTemario", "Docente", modelito);
         }
 
-        [TAccess]
         [HttpGet]
         public ActionResult CrearTemario(CrearCursoDoc Model)
         {

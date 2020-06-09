@@ -38,7 +38,7 @@ namespace Saaloon.Controllers
                     session.setSession("Usuario", datos.Usuario);
                     session.setSession("idUsuario", datos.IdUsuario.ToString());
                     session.setSession("TipoUsuario", datos.tipo);
-                    if(datos.tipo == "3")
+                    if (datos.tipo == "3")
                     {
                         session.setSession("Tipo3", datos.tipo);
                     }

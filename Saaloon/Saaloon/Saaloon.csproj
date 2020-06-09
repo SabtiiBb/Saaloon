@@ -244,6 +244,7 @@
     <Content Include="Content\img\books-pngrepo-com.png" />
     <Content Include="Content\img\cursos-de-programacion-en-Fundamentos-de-la-programación-en-Java.jpg" />
     <Content Include="Content\img\cursos-programación-para-juegos.jpg" />
+    <Content Include="Content\img\desk-classroom-pngrepo-com.png" />
     <Content Include="Content\img\Imagen1.jpg" />
     <Content Include="Content\img\Imagen2.jpg" />
     <Content Include="Content\img\Logi.png" />
@@ -423,7 +424,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Context\DBPortalEdu.dbml.layout">
       <DependentUpon>DBPortalEdu.dbml</DependentUpon>
