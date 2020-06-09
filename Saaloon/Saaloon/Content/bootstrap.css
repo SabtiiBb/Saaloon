@@ -2197,7 +2197,7 @@ textarea.form-control {
 
 .form-row {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -5px;
@@ -10298,6 +10298,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .formulariogrupo{
+   margin: auto;
    width: 30%;
 }
 
@@ -10465,4 +10466,10 @@ table.MisDatos{
     border-top: 1px solid #b2bec3;
     border-bottom: 1px solid #b2bec3;
     border-right: 1px solid #b2bec3;
+}
+
+.crearalumno{
+    margin:auto;
+    padding: 1rem;
+    width:50%;
 }

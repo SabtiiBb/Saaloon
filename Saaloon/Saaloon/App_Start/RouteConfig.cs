@@ -18,14 +18,6 @@ namespace Saaloon
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                name: "Login",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Users", action = "LogIn", id = UrlParameter.Optional }
-            );
         }
     }
 }

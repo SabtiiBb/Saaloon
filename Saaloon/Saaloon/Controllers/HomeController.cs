@@ -30,56 +30,62 @@ namespace Saaloon.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Login (Login datos)
         {
+
             if (ModelState.IsValid)
             {
-                if (datos.Validacion())
+                if(datos.Validacion())
                 {
                     session.setSession("Usuario", datos.Usuario);
+                    session.setSession("idUsuario", datos.IdUsuario.ToString());
                     session.setSession("TipoUsuario", datos.tipo);
-                    ViewBag.User1 = session.getSession("Usuario");
-                    Session["IdUsuario"] = datos.IdUsuario;
-                    return RedirectToAction("LogIn","Users");
-                }
-                else
-                {
-                    ViewBag.Message = "Error";
-                    return View("LogIn", "Users");
+                    if(datos.tipo == "3")
+                    {
+                        session.setSession("Tipo3", datos.tipo);
+                    }
+                    else
+                    {
+                        session.setSession("Tipo2", datos.tipo);
+                    }
                 }
             }
-            else
-            {
-                return View("Principal");
-            }
+
+            return RedirectToAction("LogIn", "Users");
         }
 
+        public ActionResult Registrarse()
+        {
+            return View();
+        }
 
-        //[AllowAnonymous]
-        //public ActionResult Registrarse()
-        //{
-        //    return View();
-        //}
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Registrarse(Registrarse NewUser)
+        {
+            using (var dbContext = new DBPortalEduDataContext())
+            {
+                Usuario user = new Usuario();
+                Alumno Alum = new Alumno();
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //public async Task<ActionResult> Registrarse(Registrarse datos)
-        //{C:\Users\Eduardo\Source\Repos\SabtiiBb\Saaloon\Saaloon\Saaloon\Controllers\UsersController.cs
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (datos.singIn() == false)
-        //        {
-        //            ViewBag.Message = "El usuario o el email ya estan registrados";
-        //            return View("Registrarse", datos);
-        //        }
-        //        else
-        //        {
-        //            return RedirectToAction("Login");
-        //        }
+                user.Usuario1 = NewUser.Usuario;
+                user.correo = NewUser.correo;
+                user.contraseña = NewUser.contraseña;
+                user.tipo = 3;
+                user.Activo = 1;
 
-        //    }else
-        //    {
-        //        return View("Registrarse");
-        //    }
-        //}
+                dbContext.Usuario.InsertOnSubmit(user);
+                dbContext.SubmitChanges();
+
+                var ListUsers = (from db in dbContext.Usuario select db).ToList();
+                user = ListUsers.LastOrDefault();
+
+                Alum.nombre = NewUser.nombre;
+                Alum.apellido = NewUser.apellido;
+                //Alum.genero = NewUser.genero;
+                Alum.fecha_n = Convert.ToDateTime(NewUser.fecha_n);
+                Alum.idUsuario = user.IdUsuario;
+            }
+                return RedirectToAction("Login", "Home");
+        }
 
         //************************CLIENT'S SIDE VALIDATIONS****************************
 
