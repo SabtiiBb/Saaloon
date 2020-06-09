@@ -14,7 +14,6 @@ namespace Saaloon.Controllers
     {
         SessionData Sess = new SessionData();
         // GET: Principal
-        [TAccess]
         public ActionResult Principal()
         {
             List<Context.Cursos> Listado;
@@ -27,7 +26,6 @@ namespace Saaloon.Controllers
                 return View(Listado);
         }
 
-        [Access]
         [HttpGet]
         public ActionResult Perfil()
         {
@@ -36,19 +34,22 @@ namespace Saaloon.Controllers
             Model.idUsuario = idUsuario;
             Usuario User = new Usuario();
             Alumno Alum = new Alumno();
-            
-            using (var dbContext = new DBPortalEduDataContext())
-            {
-                User = (from db in dbContext.Usuario where db.IdUsuario == Model.idUsuario select db).Single();
-                Alum = (from db in dbContext.Alumno where db.idUsuario == Model.idUsuario select db).Single();
 
-                Model.Usuario1 = User.Usuario1;
-                Model.correo = User.correo;
-                Model.nombre = Alum.nombre;
-                Model.apellido = Alum.apellido;
-                Model.fecha_n = Alum.fecha_n.ToString();
-                Model.genero = (Alum.genero).ToString() == "M" ? "Masculino" : "Femenino";
-            }
+            try
+            {
+                using (var dbContext = new DBPortalEduDataContext())
+                {
+                    User = (from db in dbContext.Usuario where db.IdUsuario == Model.idUsuario select db).Single();
+                    Alum = (from db in dbContext.Alumno where db.idUsuario == Model.idUsuario select db).Single();
+
+                    Model.Usuario1 = User.Usuario1;
+                    Model.correo = User.correo;
+                    Model.nombre = Alum.nombre;
+                    Model.apellido = Alum.apellido;
+                    Model.fecha_n = Alum.fecha_n.ToString();
+                    Model.genero = (Alum.genero).ToString() == "M" ? "Masculino" : "Femenino";
+                }
+            }catch(Exception e) { }
 
             return View(Model);
         }
@@ -70,7 +71,6 @@ namespace Saaloon.Controllers
                 return RedirectToAction("Perfil", "Principal");
         }
 
-        [Access]
         [HttpGet]
         public ActionResult ListadoCursos()
         {
@@ -84,63 +84,67 @@ namespace Saaloon.Controllers
                 return View(ListaCursos);
         }
 
-        [Access]
         [HttpGet]
         public ActionResult ContenidoCursoTema(int idCurso)
         {
             CursoContenido objCurso = new CursoContenido();
 
-            using (var dbContext = new DBPortalEduDataContext())
+            try
             {
-                Cursos curso = (from db in dbContext.Cursos where db.IdCurso == idCurso select db).Single();
-                List<Temario> temariodelcurso = (from db in dbContext.Temario where db.IdCurso == curso.IdCurso select db).ToList();
-                Docentes docente = (from db in dbContext.Docentes where db.IdDocente == curso.idDocente select db).Single();
+                using (var dbContext = new DBPortalEduDataContext())
+                {
+                    Cursos curso = (from db in dbContext.Cursos where db.IdCurso == idCurso select db).Single();
+                    List<Temario> temariodelcurso = (from db in dbContext.Temario where db.IdCurso == curso.IdCurso select db).ToList();
+                    Docentes docente = (from db in dbContext.Docentes where db.IdDocente == curso.idDocente select db).Single();
 
-                objCurso.IdCurso = curso.IdCurso;
-                objCurso.NombreCurso = curso.Nombre;
-                objCurso.Descripcion = curso.Descripcion;
-                objCurso.RecursosCurso = curso.Recursos;
-                objCurso.CostoCurso = Convert.ToDecimal(curso.Costo);
-                objCurso.Foto = curso.Foto;
-                objCurso.Videointro = curso.Videointro;
+                    objCurso.IdCurso = curso.IdCurso;
+                    objCurso.NombreCurso = curso.Nombre;
+                    objCurso.Descripcion = curso.Descripcion;
+                    objCurso.RecursosCurso = curso.Recursos;
+                    objCurso.CostoCurso = Convert.ToDecimal(curso.Costo);
+                    objCurso.Foto = curso.Foto;
+                    objCurso.Videointro = curso.Videointro;
 
-                objCurso.TemarioM = temariodelcurso;
+                    objCurso.TemarioM = temariodelcurso;
 
-                objCurso.IdDocente = docente.IdDocente;
-                objCurso.Nombre = docente.nombre;
-                objCurso.Apellido = docente.apellido;
-            }
+                    objCurso.IdDocente = docente.IdDocente;
+                    objCurso.Nombre = docente.nombre;
+                    objCurso.Apellido = docente.apellido;
+                }
+            }catch (Exception e) { }
 
             return View(objCurso);
         }
 
-        [Access]
         [HttpGet]
         public ActionResult ClaseTemaCurso(int idTema)
         {
             ClaseTema objClase = new ClaseTema();
 
-            using (var dbContext = new DBPortalEduDataContext())
+            try
             {
-                Temario objtemario = (from db in dbContext.Temario where db.IdTema == idTema select db).Single();
-                List<Temario> clasetema = (from db in dbContext.Temario where db.IdCurso == objtemario.IdCurso select db).ToList();
-                Cursos cursocont = (from db in dbContext.Cursos where db.IdCurso == objtemario.IdCurso select db).Single();
-                Docentes docente = (from db in dbContext.Docentes where db.IdDocente == cursocont.idDocente select db).Single();
+                using (var dbContext = new DBPortalEduDataContext())
+                {
+                    Temario objtemario = (from db in dbContext.Temario where db.IdTema == idTema select db).Single();
+                    List<Temario> clasetema = (from db in dbContext.Temario where db.IdCurso == objtemario.IdCurso select db).ToList();
+                    Cursos cursocont = (from db in dbContext.Cursos where db.IdCurso == objtemario.IdCurso select db).Single();
+                    Docentes docente = (from db in dbContext.Docentes where db.IdDocente == cursocont.idDocente select db).Single();
 
-                objClase.idTema = objtemario.IdTema;
-                objClase.IdCurso =Convert.ToInt32(objtemario.IdCurso);
-                objClase.Tema = objtemario.Tema;
-                objClase.DescripcionTema = objtemario.Descripcion;
-                objClase.FotoTema = objtemario.FotoTema;
+                    objClase.idTema = objtemario.IdTema;
+                    objClase.IdCurso = Convert.ToInt32(objtemario.IdCurso);
+                    objClase.Tema = objtemario.Tema;
+                    objClase.DescripcionTema = objtemario.Descripcion;
+                    objClase.FotoTema = objtemario.FotoTema;
 
-                objClase.NombreCurso = cursocont.Nombre;
+                    objClase.NombreCurso = cursocont.Nombre;
 
-                objClase.idDocente = docente.IdDocente;
-                objClase.NombreDocente = docente.nombre;
-                objClase.ApellidoDocente = docente.apellido;
+                    objClase.idDocente = docente.IdDocente;
+                    objClase.NombreDocente = docente.nombre;
+                    objClase.ApellidoDocente = docente.apellido;
 
-                objClase.TemarioClase = clasetema;
-            }
+                    objClase.TemarioClase = clasetema;
+                }
+            }catch (Exception e) { }
             return View(objClase);
         }
     }

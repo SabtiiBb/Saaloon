@@ -16,7 +16,7 @@ namespace Saaloon.Models
             return session;
         }
 
-        public void setSession(String name, String data)
+        public void setSession(String name, object data)
         {
             HttpContext.Current.Session[name] = data;
         }
