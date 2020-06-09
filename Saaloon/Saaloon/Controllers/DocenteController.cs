@@ -154,5 +154,27 @@ namespace Saaloon.Controllers
             }
             return RedirectToAction("CrearTemario", "Docente", MyModel);
         }
+
+
+        [HttpGet]
+        public ActionResult ListaTemarios (int idCurso)
+        {
+            ListaCurso objCurso = new ListaCurso();
+
+            using (var dbContext = new DBPortalEduDataContext())
+            {
+                Cursos curso = (from db in dbContext.Cursos where db.IdCurso == idCurso select db).Single();
+                List<Temario> temariodelcurso = (from db in dbContext.Temario where db.IdCurso == curso.IdCurso select db).ToList();
+                Docentes docente = (from db in dbContext.Docentes where db.IdDocente == curso.idDocente select db).Single();
+
+                objCurso.IdCurso = curso.IdCurso;
+                objCurso.NombreCurso = curso.Nombre;
+                objCurso.TemarioM = temariodelcurso;
+                objCurso.IdDocente = docente.IdDocente;
+
+            }
+
+            return View(objCurso);
+        }
     }
 }
