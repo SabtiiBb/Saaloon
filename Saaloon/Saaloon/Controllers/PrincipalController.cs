@@ -62,7 +62,7 @@ namespace Saaloon.Controllers
                 Alum.apellido = String.IsNullOrEmpty(model.apellido) ? Alum.apellido : model.apellido;
                 Alum.fecha_n = String.IsNullOrEmpty(model.fecha_n) ? Alum.fecha_n : Convert.ToDateTime(model.fecha_n);
                 Alum.genero = (String.IsNullOrEmpty(model.genero) ? Alum.genero : model.genero == "Masculino" ? 'M' : 'F');
-                dbContext.SP_ModificaAlumno(idUser, Alum.nombre, Alum.apellido, Alum.fecha_n, Alum.genero);
+                dbContext.SP_ModificaAlumno(Alum.IdAlumno, Alum.nombre, Alum.apellido, Alum.fecha_n, Alum.genero);
             }
                 return RedirectToAction("Perfil", "Principal");
         }
