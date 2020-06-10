@@ -10518,3 +10518,38 @@ table.MisDatos{
     color:white;
     text-decoration:none;
 }
+
+.myButtonComprado {
+	-moz-box-shadow: 0px 10px 14px -7px #fbc531;
+	-webkit-box-shadow: 0px 10px 14px -7px #fbc531;
+	box-shadow: 0px 10px 14px -7px #fbc531;
+	background-color:#fbc531;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #fbc531;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 28px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #f39c12;
+}
+.myButtonComprado:hover {
+	background-color:#fbc531;
+}
+.myButtonComprado:active {
+    background-color:#fbc531;
+    border:1px solid #fbc531;
+    box-shadow: 0px 10px 14px -7px #fbc531;
+	top:1px;
+}
+
+.crearpago{
+    margin:auto;
+    padding: 1rem;
+    width:75%;
+}

@@ -216,6 +216,7 @@
     <Compile Include="Models\ClaseTema.cs" />
     <Compile Include="Models\CrearCursoDoc.cs" />
     <Compile Include="Models\CursoContenido.cs" />
+    <Compile Include="Models\DataCardVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ListaCurso.cs" />
     <Compile Include="Models\Login.cs" />
@@ -245,10 +246,12 @@
     <Content Include="Content\img\cursos-de-programacion-en-Fundamentos-de-la-programación-en-Java.jpg" />
     <Content Include="Content\img\cursos-programación-para-juegos.jpg" />
     <Content Include="Content\img\desk-classroom-pngrepo-com.png" />
+    <Content Include="Content\img\Feeling Blue-amico.png" />
     <Content Include="Content\img\Imagen1.jpg" />
     <Content Include="Content\img\Imagen2.jpg" />
     <Content Include="Content\img\Logi.png" />
     <Content Include="Content\img\Telecommuting-rafiki.png" />
+    <Content Include="Content\sweetalert.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -370,6 +373,8 @@
     <Content Include="Scripts\src\utils\setAttributes.js" />
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\sweetalert.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -412,6 +417,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registrarse.cshtml" />
     <Content Include="Views\Docente\ListaTemarios.cshtml" />
+    <Content Include="Views\Principal\ListCarrito.cshtml" />
+    <Content Include="Views\Principal\_PartialViewComprar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

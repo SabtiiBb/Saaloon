@@ -25,5 +25,7 @@ namespace Saaloon.Models
         public int IdDocente { get; set; }
         public String Nombre { get; set; }
         public String Apellido { get; set; }
+
+        public int Id_CursoC { get; set; }
     }
 }
