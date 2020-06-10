@@ -20,7 +20,17 @@
                 </center>
             </div>
             <div class="precio">                
-                 <h3><b>Precio: $</b>@Html.DisplayFor(model => model.CostoCurso)<a class="myButton" data-idCurso="@Model.IdCurso"  href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Añadir al carrito</a></h3>
+                <h3>
+                    <b>Precio: $</b>@Html.DisplayFor(model => model.CostoCurso)
+                    @if (Model.Id_CursoC == 1)
+                    {
+                        <a class="myButtonComprado" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;En el carrito</a>
+                    }
+                    else
+                    {
+                        <button type="submit" class="myButton" id="myButton" name="Carrito" data-codigo="@Model.IdCurso"><i class="fas fa-shopping-cart"></i>&nbsp;Añadir al carrito</button>
+                    }
+                </h3>                
          
             </div>
             <div class="video">
@@ -59,12 +69,70 @@
                     <td class="temna"><b>@Html.DisplayFor(modelItem => item.Tema)</b></td>
                     <td class="descripciontema">@Html.DisplayFor(modelItem => item.Descripcion)</td>
                 <td>
-                <a class="btn btn-warning" href="@Url.Action("ClaseTemaCurso", "Principal", new { idTema = item.IdTema })">
-                    <i class="fas fa-chevron-right"></i>
-                </a>
+                @if (ViewBag.LoCompro==true)
+                {
+                    <a class="btn btn-warning" href="@Url.Action("ClaseTemaCurso", "Principal", new { idTema = item.IdTema })" >
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-warning" href="#Carrito" disabled="disabled">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                }
                 </td>                
             </tr>
         }
 
     </table>
+    <input type="hidden" id="Carrito" value="@Url.Action("AgregarListaDeseos", "Principal")" />
+
+    @section Scripts{
+
+        <script type="text/javascript">
+
+            $("#myButton").on("click", function (e) {
+                e.preventDefault();
+                var id = $(this).data('codigo');
+
+                swal({
+                    title: "¿Desea añadir este curso?",
+                    text: "Este curso será añadido a su lista de deseos",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Sí, añadirlo",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                type: "post",
+                                url: $("#Carrito").val(),
+                                dataType: "json",
+                                data: { idCurso: id },
+                                success: function (res) {
+
+                                    //swal("Exito", "El registro se elimino correctamente!", "success");
+                                    swal({
+                                        title: "Éxito",
+                                        text: "¡El curso se añadió correctamente!",
+                                        type: "success"
+                                    }, function () {
+                                        window.location.reload();
+                                    });
+
+                                },
+                                error: function (er) {
+                                    swal("¡Oops!", "Ha ocurrido un problema y no se pudo añadir el curso", "error");
+                                }
+                            });
+                        }
+                    });
+            })
+
+        </script>
+}
 }

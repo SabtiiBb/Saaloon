@@ -48,15 +48,15 @@ namespace Saaloon.Context
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
-    partial void Insertcompras(compras instance);
-    partial void Updatecompras(compras instance);
-    partial void Deletecompras(compras instance);
     partial void InsertTarjeta(Tarjeta instance);
     partial void UpdateTarjeta(Tarjeta instance);
     partial void DeleteTarjeta(Tarjeta instance);
     partial void InsertCarrito(Carrito instance);
     partial void UpdateCarrito(Carrito instance);
     partial void DeleteCarrito(Carrito instance);
+    partial void Insertcompras(compras instance);
+    partial void Updatecompras(compras instance);
+    partial void Deletecompras(compras instance);
     #endregion
 		
 		public DBPortalEduDataContext() : 
@@ -169,14 +169,6 @@ namespace Saaloon.Context
 			}
 		}
 		
-		public System.Data.Linq.Table<compras> compras
-		{
-			get
-			{
-				return this.GetTable<compras>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Tarjeta> Tarjeta
 		{
 			get
@@ -190,6 +182,14 @@ namespace Saaloon.Context
 			get
 			{
 				return this.GetTable<Carrito>();
+			}
+		}
+		
+		public System.Data.Linq.Table<compras> compras
+		{
+			get
+			{
+				return this.GetTable<compras>();
 			}
 		}
 		
@@ -1478,9 +1478,9 @@ namespace Saaloon.Context
 		
 		private EntitySet<Docentes> _Docentes;
 		
-		private EntitySet<compras> _compras;
-		
 		private EntitySet<Tarjeta> _Tarjeta;
+		
+		private EntitySet<compras> _compras;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -1504,8 +1504,8 @@ namespace Saaloon.Context
 		{
 			this._Alumno = new EntitySet<Alumno>(new Action<Alumno>(this.attach_Alumno), new Action<Alumno>(this.detach_Alumno));
 			this._Docentes = new EntitySet<Docentes>(new Action<Docentes>(this.attach_Docentes), new Action<Docentes>(this.detach_Docentes));
-			this._compras = new EntitySet<compras>(new Action<compras>(this.attach_compras), new Action<compras>(this.detach_compras));
 			this._Tarjeta = new EntitySet<Tarjeta>(new Action<Tarjeta>(this.attach_Tarjeta), new Action<Tarjeta>(this.detach_Tarjeta));
+			this._compras = new EntitySet<compras>(new Action<compras>(this.attach_compras), new Action<compras>(this.detach_compras));
 			OnCreated();
 		}
 		
@@ -1655,19 +1655,6 @@ namespace Saaloon.Context
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_compras", Storage="_compras", ThisKey="IdUsuario", OtherKey="IdUsuario")]
-		public EntitySet<compras> compras
-		{
-			get
-			{
-				return this._compras;
-			}
-			set
-			{
-				this._compras.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Tarjeta", Storage="_Tarjeta", ThisKey="IdUsuario", OtherKey="IdUsuariot")]
 		public EntitySet<Tarjeta> Tarjeta
 		{
@@ -1678,6 +1665,19 @@ namespace Saaloon.Context
 			set
 			{
 				this._Tarjeta.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_compras", Storage="_compras", ThisKey="IdUsuario", OtherKey="IdUsuario")]
+		public EntitySet<compras> compras
+		{
+			get
+			{
+				return this._compras;
+			}
+			set
+			{
+				this._compras.Assign(value);
 			}
 		}
 		
@@ -1725,18 +1725,6 @@ namespace Saaloon.Context
 			entity.Usuario = null;
 		}
 		
-		private void attach_compras(compras entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = this;
-		}
-		
-		private void detach_compras(compras entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = null;
-		}
-		
 		private void attach_Tarjeta(Tarjeta entity)
 		{
 			this.SendPropertyChanging();
@@ -1744,6 +1732,18 @@ namespace Saaloon.Context
 		}
 		
 		private void detach_Tarjeta(Tarjeta entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = null;
+		}
+		
+		private void attach_compras(compras entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = this;
+		}
+		
+		private void detach_compras(compras entity)
 		{
 			this.SendPropertyChanging();
 			entity.Usuario = null;
@@ -2236,246 +2236,6 @@ namespace Saaloon.Context
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.compras")]
-	public partial class compras : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_Compra;
-		
-		private System.Nullable<System.DateTime> _fecha;
-		
-		private System.Nullable<decimal> _valorcompra;
-		
-		private System.Nullable<int> _IdUsuario;
-		
-		private System.Nullable<int> _idtarjetac;
-		
-		private EntityRef<Usuario> _Usuario;
-		
-		private EntityRef<Tarjeta> _Tarjeta;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_CompraChanging(int value);
-    partial void Onid_CompraChanged();
-    partial void OnfechaChanging(System.Nullable<System.DateTime> value);
-    partial void OnfechaChanged();
-    partial void OnvalorcompraChanging(System.Nullable<decimal> value);
-    partial void OnvalorcompraChanged();
-    partial void OnIdUsuarioChanging(System.Nullable<int> value);
-    partial void OnIdUsuarioChanged();
-    partial void OnidtarjetacChanging(System.Nullable<int> value);
-    partial void OnidtarjetacChanged();
-    #endregion
-		
-		public compras()
-		{
-			this._Usuario = default(EntityRef<Usuario>);
-			this._Tarjeta = default(EntityRef<Tarjeta>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Compra", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_Compra
-		{
-			get
-			{
-				return this._id_Compra;
-			}
-			set
-			{
-				if ((this._id_Compra != value))
-				{
-					this.Onid_CompraChanging(value);
-					this.SendPropertyChanging();
-					this._id_Compra = value;
-					this.SendPropertyChanged("id_Compra");
-					this.Onid_CompraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="DateTime")]
-		public System.Nullable<System.DateTime> fecha
-		{
-			get
-			{
-				return this._fecha;
-			}
-			set
-			{
-				if ((this._fecha != value))
-				{
-					this.OnfechaChanging(value);
-					this.SendPropertyChanging();
-					this._fecha = value;
-					this.SendPropertyChanged("fecha");
-					this.OnfechaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_valorcompra", DbType="Money")]
-		public System.Nullable<decimal> valorcompra
-		{
-			get
-			{
-				return this._valorcompra;
-			}
-			set
-			{
-				if ((this._valorcompra != value))
-				{
-					this.OnvalorcompraChanging(value);
-					this.SendPropertyChanging();
-					this._valorcompra = value;
-					this.SendPropertyChanged("valorcompra");
-					this.OnvalorcompraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUsuario", DbType="Int")]
-		public System.Nullable<int> IdUsuario
-		{
-			get
-			{
-				return this._IdUsuario;
-			}
-			set
-			{
-				if ((this._IdUsuario != value))
-				{
-					if (this._Usuario.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._IdUsuario = value;
-					this.SendPropertyChanged("IdUsuario");
-					this.OnIdUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idtarjetac", DbType="Int")]
-		public System.Nullable<int> idtarjetac
-		{
-			get
-			{
-				return this._idtarjetac;
-			}
-			set
-			{
-				if ((this._idtarjetac != value))
-				{
-					if (this._Tarjeta.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidtarjetacChanging(value);
-					this.SendPropertyChanging();
-					this._idtarjetac = value;
-					this.SendPropertyChanged("idtarjetac");
-					this.OnidtarjetacChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_compras", Storage="_Usuario", ThisKey="IdUsuario", OtherKey="IdUsuario", IsForeignKey=true)]
-		public Usuario Usuario
-		{
-			get
-			{
-				return this._Usuario.Entity;
-			}
-			set
-			{
-				Usuario previousValue = this._Usuario.Entity;
-				if (((previousValue != value) 
-							|| (this._Usuario.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Usuario.Entity = null;
-						previousValue.compras.Remove(this);
-					}
-					this._Usuario.Entity = value;
-					if ((value != null))
-					{
-						value.compras.Add(this);
-						this._IdUsuario = value.IdUsuario;
-					}
-					else
-					{
-						this._IdUsuario = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Usuario");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tarjeta_compras", Storage="_Tarjeta", ThisKey="idtarjetac", OtherKey="idtarjeta", IsForeignKey=true)]
-		public Tarjeta Tarjeta
-		{
-			get
-			{
-				return this._Tarjeta.Entity;
-			}
-			set
-			{
-				Tarjeta previousValue = this._Tarjeta.Entity;
-				if (((previousValue != value) 
-							|| (this._Tarjeta.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tarjeta.Entity = null;
-						previousValue.compras.Remove(this);
-					}
-					this._Tarjeta.Entity = value;
-					if ((value != null))
-					{
-						value.compras.Add(this);
-						this._idtarjetac = value.idtarjeta;
-					}
-					else
-					{
-						this._idtarjetac = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Tarjeta");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tarjeta")]
 	public partial class Tarjeta : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2956,6 +2716,270 @@ namespace Saaloon.Context
 					this._Id_CursoC = value;
 					this.SendPropertyChanged("Id_CursoC");
 					this.OnId_CursoCChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.compras")]
+	public partial class compras : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_Compra;
+		
+		private System.Nullable<System.DateTime> _fecha;
+		
+		private System.Nullable<decimal> _valorcompra;
+		
+		private System.Nullable<int> _IdUsuario;
+		
+		private System.Nullable<int> _idtarjetac;
+		
+		private System.Nullable<int> _idCursoComprado;
+		
+		private EntityRef<Tarjeta> _Tarjeta;
+		
+		private EntityRef<Usuario> _Usuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_CompraChanging(int value);
+    partial void Onid_CompraChanged();
+    partial void OnfechaChanging(System.Nullable<System.DateTime> value);
+    partial void OnfechaChanged();
+    partial void OnvalorcompraChanging(System.Nullable<decimal> value);
+    partial void OnvalorcompraChanged();
+    partial void OnIdUsuarioChanging(System.Nullable<int> value);
+    partial void OnIdUsuarioChanged();
+    partial void OnidtarjetacChanging(System.Nullable<int> value);
+    partial void OnidtarjetacChanged();
+    partial void OnidCursoCompradoChanging(System.Nullable<int> value);
+    partial void OnidCursoCompradoChanged();
+    #endregion
+		
+		public compras()
+		{
+			this._Tarjeta = default(EntityRef<Tarjeta>);
+			this._Usuario = default(EntityRef<Usuario>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Compra", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_Compra
+		{
+			get
+			{
+				return this._id_Compra;
+			}
+			set
+			{
+				if ((this._id_Compra != value))
+				{
+					this.Onid_CompraChanging(value);
+					this.SendPropertyChanging();
+					this._id_Compra = value;
+					this.SendPropertyChanged("id_Compra");
+					this.Onid_CompraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="DateTime")]
+		public System.Nullable<System.DateTime> fecha
+		{
+			get
+			{
+				return this._fecha;
+			}
+			set
+			{
+				if ((this._fecha != value))
+				{
+					this.OnfechaChanging(value);
+					this.SendPropertyChanging();
+					this._fecha = value;
+					this.SendPropertyChanged("fecha");
+					this.OnfechaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_valorcompra", DbType="Money")]
+		public System.Nullable<decimal> valorcompra
+		{
+			get
+			{
+				return this._valorcompra;
+			}
+			set
+			{
+				if ((this._valorcompra != value))
+				{
+					this.OnvalorcompraChanging(value);
+					this.SendPropertyChanging();
+					this._valorcompra = value;
+					this.SendPropertyChanged("valorcompra");
+					this.OnvalorcompraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUsuario", DbType="Int")]
+		public System.Nullable<int> IdUsuario
+		{
+			get
+			{
+				return this._IdUsuario;
+			}
+			set
+			{
+				if ((this._IdUsuario != value))
+				{
+					if (this._Usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._IdUsuario = value;
+					this.SendPropertyChanged("IdUsuario");
+					this.OnIdUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idtarjetac", DbType="Int")]
+		public System.Nullable<int> idtarjetac
+		{
+			get
+			{
+				return this._idtarjetac;
+			}
+			set
+			{
+				if ((this._idtarjetac != value))
+				{
+					if (this._Tarjeta.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidtarjetacChanging(value);
+					this.SendPropertyChanging();
+					this._idtarjetac = value;
+					this.SendPropertyChanged("idtarjetac");
+					this.OnidtarjetacChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCursoComprado", DbType="Int")]
+		public System.Nullable<int> idCursoComprado
+		{
+			get
+			{
+				return this._idCursoComprado;
+			}
+			set
+			{
+				if ((this._idCursoComprado != value))
+				{
+					this.OnidCursoCompradoChanging(value);
+					this.SendPropertyChanging();
+					this._idCursoComprado = value;
+					this.SendPropertyChanged("idCursoComprado");
+					this.OnidCursoCompradoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tarjeta_compras", Storage="_Tarjeta", ThisKey="idtarjetac", OtherKey="idtarjeta", IsForeignKey=true)]
+		public Tarjeta Tarjeta
+		{
+			get
+			{
+				return this._Tarjeta.Entity;
+			}
+			set
+			{
+				Tarjeta previousValue = this._Tarjeta.Entity;
+				if (((previousValue != value) 
+							|| (this._Tarjeta.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tarjeta.Entity = null;
+						previousValue.compras.Remove(this);
+					}
+					this._Tarjeta.Entity = value;
+					if ((value != null))
+					{
+						value.compras.Add(this);
+						this._idtarjetac = value.idtarjeta;
+					}
+					else
+					{
+						this._idtarjetac = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Tarjeta");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_compras", Storage="_Usuario", ThisKey="IdUsuario", OtherKey="IdUsuario", IsForeignKey=true)]
+		public Usuario Usuario
+		{
+			get
+			{
+				return this._Usuario.Entity;
+			}
+			set
+			{
+				Usuario previousValue = this._Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Usuario.Entity = null;
+						previousValue.compras.Remove(this);
+					}
+					this._Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.compras.Add(this);
+						this._IdUsuario = value.IdUsuario;
+					}
+					else
+					{
+						this._IdUsuario = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Usuario");
 				}
 			}
 		}

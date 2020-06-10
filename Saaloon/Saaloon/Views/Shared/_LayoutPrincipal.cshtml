@@ -11,13 +11,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/Swal")
     </head>
     <body>
         <div class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
             <div class="container">
                 <img src="~/Content/img/LOGOV.png" class="imagenlogo" />
                 <a class="navbar-brand" href="#">
-                    <h4><b> Bienvenido: @ViewBag.User1</b></h4>                    
+                    <h4><b> Bienvenido: @Session["Usuario"]</b></h4>                    
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,6 +30,12 @@
                         </li>
                         <li class="nav-item active">
                                 @Html.ActionLink("Cursos", "ListadoCursos", "Principal", new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Mis Compras", "ListadoCursos", "Principal", new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Lista de deseos", "ListCarrito", "Principal", new { @class = "nav-link" })
                         </li>
                         <li class="nav-item active">
                             @Html.ActionLink("Mi Perfil", "Perfil", "Principal", new { @class = "nav-link" })
@@ -60,5 +67,7 @@
         </footer>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/ContentSwal/Swal")
+        @RenderSection("scripts", required: false)
     </body>
 </html>

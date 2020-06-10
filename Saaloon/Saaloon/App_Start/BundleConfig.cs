@@ -26,6 +26,15 @@ namespace Saaloon
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Swal").Include(
+                  "~/Content/sweetalert.css"
+               ));
+            //Nombre del bundle, no necesariamente debe de ser asi, pero se rige bajo esa estructura
+            bundles.Add(new ScriptBundle("~/ContentSwal/Swal").Include(
+                //Añadimos los archivos a agrupar    
+                "~/Scripts/sweetalert.min.js"
+                ));
         }
     }
 }
