@@ -20,8 +20,8 @@
                 </center>
             </div>
             <div class="precio">                
-                 <h3><b>Precio: $</b>@Html.DisplayFor(model => model.CostoCurso)<a class="myButton" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Añadir al carrito</a></h3>
-               
+                 <h3><b>Precio: $</b>@Html.DisplayFor(model => model.CostoCurso)<a class="myButton" data-idCurso="@Model.IdCurso"  href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Añadir al carrito</a></h3>
+         
             </div>
             <div class="video">
                 <iframe width="100%" height="100%" src="@Html.DisplayFor(model => model.Videointro)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
