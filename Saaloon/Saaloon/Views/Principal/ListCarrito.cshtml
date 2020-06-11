@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Saaloon.Context.Carrito>
+
+@{
+    ViewBag.Title = "ListCarrito";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+@if (Model==null)
+{
+    <br />
+    <center>
+        <h2><b>La lista de deseos está vacía</b>
+            <img src="~/Content/img/FeelingBlue-amico.png" width="50%" />
+        </h2>
+        <br />        
+    </center>    
+
+}
+else
+{
+    <br /><br /><br />
+    <table class="table table-striped" style="text-align:center">
+        <tr>
+            <th class="table-dark">
+                @*@Html.DisplayNameFor(model => model.Nombre)*@
+                Nombre
+            </th>
+            <th width="60%" class="table-dark">
+                @*@Html.DisplayNameFor(model => model.descripcion)*@
+                Descripción del Curso
+            </th>
+            <th class="table-dark">
+                @*@Html.DisplayNameFor(model => model.valorcompra)*@
+                Precio
+            </th>
+            <th class="table-dark"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td width="60%">
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.valorcompra)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-comprar" data-codigo="@item.Id_CursoC"><i class="fab fa-shopify"></i></button>
+                    <button type="submit" class="btn btn-danger btn-Eliminar" data-codigo="@item.Id_CursoC"><i class="fas fa-trash"></i></button>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-url="@Url.Action("_PartialViewComprar", "Principal", new { idCurso = @item.Id_CursoC})" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
+                    <input type="hidden" value="@Html.DisplayFor(modelItem => item.Id_UsuarioC)" />
+                    <input type="hidden" value="@Html.DisplayFor(modelItem => item.Id_CursoC)" />
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br /><br />
+}
+
+<input type="hidden" id="Borrar" value="@Url.Action("QuitarListaDeseo", "Principal")" />
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+        $(".btn-Eliminar").on("click", function (e) {
+                e.preventDefault();
+                var id = $(this).data('codigo');
+
+                swal({
+                    title: "¿Desea eliminar este curso?",
+                    text: "Este curso será eliminar de su lista de deseos",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Sí, eliminarlo",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                type: "post",
+                                url: $("#Borrar").val(),
+                                dataType: "json",
+                                data: { idCurso: id },
+                                success: function (res) {
+
+                                    //swal("Exito", "El registro se elimino correctamente!", "success");
+                                    swal({
+                                        title: "Éxito",
+                                        text: "¡El curso se eliminó correctamente!",
+                                        type: "success"
+                                    }, function () {
+                                        window.location.reload();
+                                    });
+
+                                },
+                                error: function (er) {
+                                    swal("¡Oops!", "Ha ocurrido un problema y no se pudo eliminar el curso", "error");
+                                }
+                            });
+                        }
+                    });
+            })
+        $(document).ready(function () {
+
+            $('.btn-comprar').click(function () {
+
+                var url = $('#myModal').data('url');
+                    $.get(url, function (data) {
+                    $('#myModal').html(data);
+                    $('#myModal').modal('show');
+
+         })
+       })
+   });
+    </script>
+}
