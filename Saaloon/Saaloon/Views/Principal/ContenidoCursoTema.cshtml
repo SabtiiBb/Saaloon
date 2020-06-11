@@ -1,0 +1,142 @@
+﻿@model Saaloon.Models.CursoContenido
+
+@{
+    ViewBag.Title = "ContenidoCursoTema";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="grid-container">
+            <div class="NombreCurso">
+                <center>
+                    <h2>
+                        <b>
+                            @Html.DisplayFor(model => model.NombreCurso)
+                        </b>                    
+                    </h2>
+                </center>
+            </div>
+            <div class="precio">                
+                <h3>
+                    <b>Precio: $</b>@Html.DisplayFor(model => model.CostoCurso)
+                    @if (Model.Id_CursoC == 1)
+                    {
+                        <a class="myButtonComprado" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;En el carrito</a>
+                    }
+                    else if (Model.Id_CursoC == 2)
+                    {
+                        <a class="myButtonComprado" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Comprado</a>
+                    }
+                    else
+                    {
+                        <button type="submit" class="myButton" id="myButton" name="Carrito" data-codigo="@Model.IdCurso"><i class="fas fa-shopping-cart"></i>&nbsp;Añadir al carrito</button>
+                    }
+                </h3>                
+         
+            </div>
+            <div class="video">
+                <iframe width="100%" height="100%" src="@Html.DisplayFor(model => model.Videointro)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="descripcion">
+                <h5><b>Descripción: </b></h5>
+                @Html.DisplayFor(model => model.Descripcion)
+            </div>
+            <div class="recursos">
+                <h5><b>Recursos: </b></h5>
+                @Html.DisplayFor(model => model.RecursosCurso)
+            </div>
+            <div class="docente">
+                <h5><b>Nombre Docente: </b></h5>
+                @Html.DisplayFor(model => model.Nombre) @Html.DisplayFor(model => model.Apellido)
+            </div>
+        </div>        
+                @Html.HiddenFor(model => model.IdCurso)
+                @Html.HiddenFor(model => model.IdDocente)
+    <br/>
+    <hr />
+    <table class="table table-hover">
+        <tr>
+            <th colspan="3" class="table-dark">
+                <center>
+                    <h2>
+                        @Html.DisplayFor(model => model.NombreCurso)
+                    </h2>
+                </center>
+            </th>
+        </tr>
+        @foreach (var item in Model.TemarioM)
+        {
+            <tr class="contenidotema">                
+                    <td class="temna"><b>@Html.DisplayFor(modelItem => item.Tema)</b></td>
+                    <td class="descripciontema">@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                <td>
+                @if (ViewBag.LoCompro==true)
+                {
+                    <a class="btn btn-warning" href="@Url.Action("ClaseTemaCurso", "Principal", new { idTema = item.IdTema })" >
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-warning" href="#Carrito" disabled="disabled">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                }
+                </td>                
+            </tr>
+        }
+
+    </table>
+    <input type="hidden" id="Carrito" value="@Url.Action("AgregarListaDeseos", "Principal")" />
+
+    @section Scripts{
+
+        <script type="text/javascript">
+
+            $("#myButton").on("click", function (e) {
+                e.preventDefault();
+                var id = $(this).data('codigo');
+
+                swal({
+                    title: "¿Desea añadir este curso?",
+                    text: "Este curso será añadido a su lista de deseos",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Sí, añadirlo",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                type: "post",
+                                url: $("#Carrito").val(),
+                                dataType: "json",
+                                data: { idCurso: id },
+                                success: function (res) {
+
+                                    //swal("Exito", "El registro se elimino correctamente!", "success");
+                                    swal({
+                                        title: "Éxito",
+                                        text: "¡El curso se añadió correctamente!",
+                                        type: "success"
+                                    }, function () {
+                                        window.location.reload();
+                                    });
+
+                                },
+                                error: function (er) {
+                                    swal("¡Oops!", "Ha ocurrido un problema y no se pudo añadir el curso", "error");
+                                }
+                            });
+                        }
+                    });
+            })
+
+        </script>
+}
+}

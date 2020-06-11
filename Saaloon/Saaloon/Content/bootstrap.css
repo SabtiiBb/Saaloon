@@ -1739,12 +1739,12 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color:rgba(223, 230, 233,1.0);
 }
 
 .table-hover tbody tr:hover {
   color: #212529;
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: rgba(130, 204, 221,1.0)
 }
 
 .table-primary,
@@ -2034,7 +2034,6 @@ pre code {
 }
 
 .form-control {
-  display: block;
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
@@ -2198,7 +2197,7 @@ textarea.form-control {
 
 .form-row {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -5px;
@@ -4749,6 +4748,7 @@ input[type="button"].btn-block {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
+  padding: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
@@ -4854,7 +4854,8 @@ input[type="button"].btn-block {
 .card-img-bottom {
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 100%;
+  margin:auto;
+  width: 80%;
 }
 
 .card-img,
@@ -6625,7 +6626,8 @@ a.close.disabled {
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: #fff;
+  color: #000000;
+  font-weight: bold;
   text-align: center;
 }
 
@@ -10276,3 +10278,278 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+/*.contactosss{
+    background-color: #ffbe76;
+}*/
+
+.loginloginlogin{
+    text-align:center;
+}
+
+
+.imagenlogo{
+    width: 3.5rem;
+}
+
+.imagenlogin{
+    margin:auto;
+    height:10.5rem;
+    margin-bottom: 2rem;
+}
+
+.formulariogrupo{
+   margin: auto;
+   text-align:  center;
+    width: 250px;
+}
+
+.Imagenperfilvc{
+    height: 250px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.MisDatos > div{
+    width:100%;
+    margin:2rem;
+}
+
+label{
+    margin: 2rem;
+}
+
+table.MisDatos{
+    width:100%;
+}
+
+.grid-container { 
+    height: 100%; 
+    }
+
+.grid-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1.1fr 0.5fr 0.3fr;
+    gap: 2px 2px;
+    height:30rem;
+    text-align:justify;
+}
+
+.NombreCurso { 
+    grid-area: 1 / 1 / 2 / 3;     
+     border-bottom: 1px solid #b2bec3;
+}
+.NombreCurso > center> h2{ 
+    margin:1rem;
+}
+
+.precio {    
+     border-bottom: 1px solid #b2bec3;
+     grid-area: 1 / 3 / 2 / 4;
+     text-align:right;
+     padding-right:1rem;
+}
+
+.video {
+     grid-area: 2 / 1 / 5 / 3;
+     border-right: 1px solid #b2bec3;
+     height: 100%; 
+     width:100%;
+}
+
+.descripcion 
+{ 
+    grid-area: 2 / 3 / 3 / 4;
+    height:100%;    
+    border-bottom: 1px solid #b2bec3;
+}
+
+.recursos { 
+    grid-area: 3 / 3 / 4 / 4; 
+     border-bottom: 1px solid #b2bec3;
+}
+
+.docente { 
+    grid-area: 4 / 3 / 5 / 4; 
+}
+
+/* For presentation only, no need to copy the code below */
+.grid-container > div{ 
+    padding:0.5rem;
+}
+
+.myButton {
+	-moz-box-shadow: 0px 10px 14px -7px #3dc21b;
+	-webkit-box-shadow: 0px 10px 14px -7px #3dc21b;
+	box-shadow: 0px 10px 14px -7px #3dc21b;
+	background-color:#44c767;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 28px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+    background-color:#fbc531;
+    border:1px solid #fbc531;
+    box-shadow: 0px 10px 14px -7px #fbc531;
+	top:1px;
+}
+
+.grid-container-clasetema {    
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2.2fr 1.1fr;
+    grid-template-rows: 0.4fr 1.4fr 1fr 0.3fr;
+    gap: 1px 1px;  
+    height:40rem;
+    text-align:justify;
+}
+
+.nombres-clasetema {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 1px 1px;
+  grid-area: 1 / 1 / 2 / 4;
+  border: 1px solid #b2bec3;
+}
+
+.nombreCurso-clasetema {
+     grid-area: 1 / 1 / 2 / 2;
+     margin:auto;
+}
+
+.nombretema-clasetema {
+     grid-area: 1 / 2 / 2 / 3;
+     margin:auto;
+     text-align:
+}
+
+.video-clasetema {
+     grid-area: 2 / 1 / 4 / 3;
+     padding: 1rem;
+     border-left: 1px solid #b2bec3;
+}
+
+.descripciondeltema-clasetema { 
+    grid-area: 2 / 3 / 4 / 4;
+    padding: 1rem; 
+    border-left: 1px solid #b2bec3;
+    border-right: 1px solid #b2bec3;
+}
+
+.nombre-del-docente { 
+    grid-area: 4 / 1 / 5 / 3;
+    padding: 1rem;
+    border-top: 1px solid #b2bec3;
+    border-left: 1px solid #b2bec3;
+    border-bottom: 1px solid #b2bec3;
+}
+
+.volver-clasetema { 
+    grid-area: 4 / 3 / 5 / 4;
+    padding: 1rem;   
+    border-top: 1px solid #b2bec3;
+    border-bottom: 1px solid #b2bec3;
+    border-right: 1px solid #b2bec3;
+}
+
+.crearalumno{
+    margin:auto;
+    padding: 1rem;
+    width:50%;
+}
+
+.BannerDocente > h2{
+    background-color:#eeeeee;
+    padding:1rem;
+    margin:1rem;
+    font-weight:bolder;
+    color:#32e0c4;
+}
+.grid-container-docente-curso {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.1fr;
+  grid-template-rows: 0.2fr 0.7fr 0.2fr;
+  gap: 1px 1px;
+  margin:1.5rem;
+  border: solid 2px grey;
+  border-right:none;
+  border-radius:10px;
+}
+.grid-container-docente-curso > div{
+    padding:1rem;
+}
+.foto-docente-curso { grid-area: 1 / 1 / 4 / 2;
+                      border-right:solid 2px grey;
+}
+.tema-docente-curso {
+     grid-area: 1 / 2 / 2 / 4;
+}
+
+.tema-docente-curso > h4{
+   font-weight:bolder;
+}
+.descripcio-docente-curso { grid-area: 2 / 2 / 3 / 4; }
+
+.precio-docente-curso { grid-area: 3 / 2 / 4 / 4; }
+
+.botonvertemario-docente-curso { 
+    grid-area: 1 / 4 / 4 / 5; 
+}
+
+.botonvertemario-docente-curso > a{ 
+    color:white;
+    text-decoration:none;
+}
+
+.myButtonComprado {
+	-moz-box-shadow: 0px 10px 14px -7px #fbc531;
+	-webkit-box-shadow: 0px 10px 14px -7px #fbc531;
+	box-shadow: 0px 10px 14px -7px #fbc531;
+	background-color:#fbc531;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #fbc531;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 28px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #f39c12;
+}
+.myButtonComprado:hover {
+	background-color:#fbc531;
+}
+.myButtonComprado:active {
+    background-color:#fbc531;
+    border:1px solid #fbc531;
+    box-shadow: 0px 10px 14px -7px #fbc531;
+	top:1px;
+}
+
+.crearpago{
+    margin:auto;
+    padding: 1rem;
+    width:75%;
+}

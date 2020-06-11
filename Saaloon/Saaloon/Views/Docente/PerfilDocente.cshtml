@@ -1,0 +1,74 @@
+﻿@model Saaloon.Models.PerfilDocente
+
+@{
+    ViewBag.Title = "PerfilDocente";
+    Layout = "~/Views/Shared/_LayoutDocente.cshtml";
+}
+
+@using (Html.BeginForm())
+            {
+    @Html.AntiForgeryToken()
+    <center>
+        <img src="~/Content/img/Asset 4@2x.png" class="Imagenperfilvc" />
+        <h4><b>Mis Datos Personales</b></h4>
+        <hr />
+    </center>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*@Html.LabelFor(model => model.Usuario1, htmlAttributes: new { @class = "control-label col-md-2" })*@
+    <form>
+        <table class="MisDatos table-bordered table-striped">
+            <tr>
+                <td>
+                    <label>Nombre de Usuario: </label>
+                    @Html.EditorFor(model => model.Usuario1, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.Usuario1, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    <label>Correo:</label>
+                    @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Nombre: </label>
+                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    <label>Apellido: </label>
+                    @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.apellido, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Fecha de Nacimiento: </label>
+                    @Html.EditorFor(model => model.fecha_n, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                    @Html.ValidationMessageFor(model => model.fecha_n, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    <label>Género: </label>
+                    @Html.EditorFor(model => model.genero, new { htmlAttributes = new { @class = "form-control" ,@disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.genero, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr></tr>
+        </table>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.idUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.idUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.idUsuario, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        <br />
+        <center>
+            <input type="submit" value="Guardar" class="btn btn-outline-primary btn-block" />
+        </center>
+    </form>
+    <br />
+}
+
+
+
