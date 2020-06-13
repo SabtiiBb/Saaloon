@@ -52,8 +52,15 @@ namespace Saaloon.Controllers
             return RedirectToAction("LogIn", "Users");
         }
 
+        [HttpGet]
         public ActionResult Registrarse()
         {
+            List<SelectListItem> lst = new List<SelectListItem>();
+
+            lst.Add(new SelectListItem() { Text = "Masculino", Value = "M" });
+            lst.Add(new SelectListItem() { Text = "Femenino", Value = "F" });
+
+            ViewBag.genero = lst;
             return View();
         }
 
@@ -80,9 +87,11 @@ namespace Saaloon.Controllers
 
                 Alum.nombre = NewUser.nombre;
                 Alum.apellido = NewUser.apellido;
-                //Alum.genero = NewUser.genero;
+                Alum.genero = Convert.ToChar(NewUser.genero);
                 Alum.fecha_n = Convert.ToDateTime(NewUser.fecha_n);
                 Alum.idUsuario = user.IdUsuario;
+                dbContext.Alumno.InsertOnSubmit(Alum);
+                dbContext.SubmitChanges();
             }
                 return RedirectToAction("Login", "Home");
         }

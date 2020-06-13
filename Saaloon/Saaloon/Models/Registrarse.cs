@@ -33,6 +33,7 @@ namespace Saaloon.Models
         //Tabla Alumno
         public String nombre { get; set; }
         public String apellido { get; set; }
+        [DataType(DataType.Date)]
         public DateTime fecha_n { get; set; }
         public  String genero { get; set; }
 

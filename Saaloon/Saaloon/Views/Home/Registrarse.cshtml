@@ -18,53 +18,104 @@
             </div>
         </center>
         <br />
-        @using (Html.BeginForm("Registrarse", "Home", FormMethod.Post, new { @class = "form-signin" }))
+        @using (Html.BeginForm("Registrarse", "Home", FormMethod.Post, new { @class = "crearalumno" }))
         {
+            @Html.AntiForgeryToken()
+
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <center>
-                <div>
-                    @Html.TextBoxFor(s => s.Usuario, new { @class = "form-control input-lg", @placeholder = "Usuario" })
-                    @Html.ValidationMessageFor(s => s.Usuario, "", new { @class = "text-danger" })
+            <div class="crearalumno">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-auto">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-user fa"></i></div>
+                                </div>
+                                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", placeholder = "Usuario" } })
+                                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-envelope fa"></i></div>
+                                </div>
+                                @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control", placeholder = "Correo" } })
+                                @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-auto">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-key"></i></div>
+                                </div>
+                                @Html.EditorFor(model => model.contraseña, new { htmlAttributes = new { @class = "form-control", placeholder = "Contraseña" } })
+                                @Html.ValidationMessageFor(model => model.contraseña, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-key"></i></div>
+                                </div>
+                                @Html.EditorFor(model => model.ConfirmarContraseña, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirmar contraseña" } })
+                                @Html.ValidationMessageFor(model => model.ConfirmarContraseña, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-auto">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-user fa"></i></div>
+                                </div>
+                                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre" } })
+                                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-user fa"></i></div>
+                                </div>
+                                @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellido" } })
+                                @Html.ValidationMessageFor(model => model.apellido, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-auto">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
+                                </div>
+                                @Html.EditorFor(model => model.fecha_n, new { htmlAttributes = new { @class = "form-control", placeholder = "Fecha de Nacimiento" } })
+                                @Html.ValidationMessageFor(model => model.fecha_n, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-venus-mars"></i></div>
+                                </div>
+                                @Html.DropDownListFor(x => x.genero, (IEnumerable<SelectListItem>)ViewBag.genero, new { @class = "form-control", placeholder = "Genero" })
+                                @Html.ValidationMessageFor(model => model.genero, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <center>
+                        <div class="btn">
+                            @Html.ActionLink("Cancelar", "Login", "Home", new { @class = "btn btn-secondary" })
+                        </div>
+                        <input type="submit" value="Registrar" class="btn btn-success" />
+                    </center>
+                    <br />
                 </div>
-            </center>
-            <br />
-            <center>
-                <div>
-                    @Html.TextBoxFor(s => s.correo, new { @class = "form-control input-lg", @placeholder = "Correo" })
-                    @Html.ValidationMessageFor(s => s.correo, "", new { @class = "text-danger" })
-                </div>
-            </center>
-            <br />
-            <center>
-                <div>
-                    @Html.TextBoxFor(s => s.contraseña, new { @class = "form-control input-lg", @placeholder = "Contraseña" })
-                    @Html.ValidationMessageFor(s => s.contraseña, "", new { @class = "text-danger" })
-                </div>
-            </center>
-            <br />
-            <center>
-                <div>
-                    @Html.TextBoxFor(s => s.nombre, new { @class = "form-control input-lg", @placeholder = "Nombre" })
-                    @Html.ValidationMessageFor(s => s.nombre, "", new { @class = "text-danger" })
-                </div>
-            </center>
-            <br />
-            <center>
-                <div>
-                    @Html.TextBoxFor(s => s.apellido, new { @class = "form-control input-lg", @placeholder = "Apellido" })
-                    @Html.ValidationMessageFor(s => s.apellido, "", new { @class = "text-danger" })
-                </div>
-            </center>
-            <br />
-            <center>
-                <div>
-                    @Html.TextBoxFor(s => s.fecha_n, new { @class = "form-control input-lg", @placeholder = "Fecha de Nacimiento" })
-                    @Html.ValidationMessageFor(s => s.fecha_n, "", new { @class = "text-danger" })
-                </div>
-            </center>
-            <br />
-            <center><input type="submit" value="Registrar" class="btn btn-success" /></center>
-            <br />
+        </div>
         }
     </div>
 </div>
