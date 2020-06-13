@@ -280,6 +280,7 @@ namespace Saaloon.Controllers
 
         public ActionResult MisCompras()
         {
+            List<ListComprasVM> compra = new List<ListComprasVM>();
             List<compras> ListadoComprado = new List<compras>();
             int x = 0;
             try
@@ -288,12 +289,22 @@ namespace Saaloon.Controllers
                 {
                     ListadoComprado = (from db in dbContext.compras where db.IdUsuario == Convert.ToInt32(Sess.getSession("idUsuario")) select db).ToList();
                     x = ListadoComprado.Count();
+                    Cursos Cursito = new Cursos();
+                    foreach(var i in ListadoComprado)
+                    {
+                        Cursito = (from db in dbContext.Cursos where db.IdCurso == i.idCursoComprado select db).Single();
+                        var Tarjeta = (from db in dbContext.Tarjeta where db.idtarjeta == i.idtarjetac select db).Single();
+
+                        compra.Add(new ListComprasVM { NombreCurso = Cursito.Nombre,  Costo = Convert.ToDecimal(Cursito.Costo), NombreTarjeta = Tarjeta.nombretc, NumeroTarjeta = Tarjeta.numerotc, Fecha= i.fecha.ToString(), idcompra = "A00000P"+i.id_Compra});
+                        
+
+                    }
                 }
             }
             catch { }
             if(x != 0)
             {
-                return View(ListadoComprado);
+                return View(compra);
             }
             return View();
         }

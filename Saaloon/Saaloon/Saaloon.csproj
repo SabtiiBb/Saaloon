@@ -220,6 +220,7 @@
     <Compile Include="Models\EditarMiCursoVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ListaCurso.cs" />
+    <Compile Include="Models\ListComprasVM.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PerfilDocente.cs" />

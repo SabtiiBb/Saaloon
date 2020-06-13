@@ -1,18 +1,16 @@
-﻿@model IEnumerable<Saaloon.Context.compras>
+﻿@model IEnumerable<Saaloon.Models.ListComprasVM>
 
 @{
     ViewBag.Title = "MisCompras";
     Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
 }
 
-<h2>MisCompras</h2>
-
 @if (Model == null)
 {
     <br />
     <center>
         <h2>
-            <b>Aun no hay comprar registradas :(</b>
+            <b>Aún no hay comprar registradas :(</b>
             <img src="~/Content/img/FeelingBlue-amico.png" width="50%" />
         </h2>
         <br />
@@ -20,46 +18,51 @@
 }
 else
 {
-    <table class="table table-hover">
+    <br /><br /><br />
+    <table class="table table-striped">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.fecha)
+                No. Compra
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.valorcompra)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdUsuario)
+                Nombre curso
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.idtarjetac)
+                Número de tarjeta
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.idCursoComprado)
+               Fecha y hora de la compra
             </th>
-            <th></th>
+            <th>Valor Compra</th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.fecha)
+                    @Html.DisplayFor(modelItem => item.idcompra)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.valorcompra)
+                    @Html.DisplayFor(modelItem => item.NombreTarjeta)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdUsuario)
+                    @Html.DisplayFor(modelItem => item.NombreCurso)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.idtarjetac)
+                    @Html.DisplayFor(modelItem => item.NumeroTarjeta)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.idCursoComprado)
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Costo)
                 </td>
             </tr>
         }
 
     </table>
+    <br /><br />
 }
