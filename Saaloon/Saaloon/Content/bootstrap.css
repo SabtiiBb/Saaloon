@@ -6431,6 +6431,7 @@ a.close.disabled {
 
 .carousel {
   position: relative;
+  margin:auto;
 }
 
 .carousel.pointer-event {
@@ -6440,7 +6441,6 @@ a.close.disabled {
 
 .carousel-inner {
   position: relative;
-  width: 100%;
   overflow: hidden;
 }
 
@@ -6452,9 +6452,10 @@ a.close.disabled {
 
 .carousel-item {
   position: relative;
+  margin:auto;
   display: none;
   float: left;
-  width: 100%;
+  width:100%;
   margin-right: -100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -10474,6 +10475,12 @@ table.MisDatos{
     margin:auto;
     padding: 1rem;
     width:50%;
+}
+
+.carouselhome{
+    margin-top: 1rem;
+    margin:auto;
+    width:70%;
 }
 
 .BannerDocente > h2{
