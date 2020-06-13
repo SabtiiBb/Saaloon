@@ -243,10 +243,7 @@
     <Content Include="Content\img\bannervertical.png" />
     <Content Include="Content\img\board-strategy-board-pngrepo-com.png" />
     <Content Include="Content\img\books-pngrepo-com.png" />
-    <Content Include="Content\img\cursos-de-programacion-en-Fundamentos-de-la-programación-en-Java.jpg" />
-    <Content Include="Content\img\cursos-programación-para-juegos.jpg" />
     <Content Include="Content\img\desk-classroom-pngrepo-com.png" />
-    <Content Include="Content\img\Feeling Blue-amico.png" />
     <Content Include="Content\img\Imagen1.jpg" />
     <Content Include="Content\img\Imagen2.jpg" />
     <Content Include="Content\img\Logi.png" />
@@ -290,6 +287,7 @@
       <LastGenOutput>DBPortalEdu.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Properties\PublishProfiles\published.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -380,7 +378,9 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -409,7 +409,6 @@
     <Content Include="Views\Principal\ContenidoCursoTema.cshtml" />
     <Content Include="Views\Principal\ClaseTemaCurso.cshtml" />
     <Content Include="Views\Shared\_LayoutDocente.cshtml" />
-    <Content Include="Views\Principal\CrearCurso.cshtml" />
     <Content Include="Views\Docente\CrearCurso.cshtml" />
     <Content Include="Views\Docente\CrearTemario.cshtml" />
     <Content Include="Views\Docente\PerfilDocente.cshtml" />

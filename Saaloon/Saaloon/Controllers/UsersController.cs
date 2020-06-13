@@ -24,12 +24,8 @@ namespace Saaloon.Controllers
             {
                 return RedirectToAction("Principal", "Principal");
             }
-            else
-            {
-                ViewBag.Message = "Error";
-            }
 
-            return View(ViewBag.Message);
+            return RedirectToAction("Login", "Home");
         }
 
         public ActionResult Close()
