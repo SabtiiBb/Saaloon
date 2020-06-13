@@ -32,7 +32,7 @@
                                 @Html.ActionLink("Cursos", "ListadoCursos", "Principal", new { @class = "nav-link" })
                         </li>
                         <li class="nav-item active">
-                            @Html.ActionLink("Mis Compras", "ListadoCursos", "Principal", new { @class = "nav-link" })
+                            @Html.ActionLink("Mis Compras", "MisCompras", "Principal", new { @class = "nav-link" })
                         </li>
                         <li class="nav-item active">
                             @Html.ActionLink("Lista de deseos", "ListCarrito", "Principal", new { @class = "nav-link" })
@@ -67,6 +67,7 @@
         </footer>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/ContentSwal/Swal")
         @RenderSection("scripts", required: false)
     </body>

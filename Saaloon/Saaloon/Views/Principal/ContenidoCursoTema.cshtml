@@ -26,6 +26,10 @@
                     {
                         <a class="myButtonComprado" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;En el carrito</a>
                     }
+                    else if (Model.Id_CursoC == 2)
+                    {
+                        <a class="myButtonComprado" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Comprado</a>
+                    }
                     else
                     {
                         <button type="submit" class="myButton" id="myButton" name="Carrito" data-codigo="@Model.IdCurso"><i class="fas fa-shopping-cart"></i>&nbsp;Añadir al carrito</button>
@@ -69,7 +73,7 @@
                     <td class="temna"><b>@Html.DisplayFor(modelItem => item.Tema)</b></td>
                     <td class="descripciontema">@Html.DisplayFor(modelItem => item.Descripcion)</td>
                 <td>
-                @if (ViewBag.LoCompro==true)
+                @if (Model.Id_CursoC == 2)
                 {
                     <a class="btn btn-warning" href="@Url.Action("ClaseTemaCurso", "Principal", new { idTema = item.IdTema })" >
                         <i class="fas fa-chevron-right"></i>

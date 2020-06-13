@@ -217,6 +217,7 @@
     <Compile Include="Models\CrearCursoDoc.cs" />
     <Compile Include="Models\CursoContenido.cs" />
     <Compile Include="Models\DataCardVM.cs" />
+    <Compile Include="Models\EditarMiCursoVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ListaCurso.cs" />
     <Compile Include="Models\Login.cs" />
@@ -418,6 +419,8 @@
     <Content Include="Views\Docente\ListaTemarios.cshtml" />
     <Content Include="Views\Principal\ListCarrito.cshtml" />
     <Content Include="Views\Principal\_PartialViewComprar.cshtml" />
+    <Content Include="Views\Principal\MisCompras.cshtml" />
+    <Content Include="Views\Docente\EditarCurso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -51,7 +51,7 @@ else
                 <td>
                     <button type="button" class="btn btn-warning btn-comprar" data-codigo="@item.Id_CursoC"><i class="fab fa-shopify"></i></button>
                     <button type="submit" class="btn btn-danger btn-Eliminar" data-codigo="@item.Id_CursoC"><i class="fas fa-trash"></i></button>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-url="@Url.Action("_PartialViewComprar", "Principal")" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-url="@Url.Action("_PartialViewComprar", "Principal", new { idCurso = @item.Id_CursoC})" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
                     <input type="hidden" value="@Html.DisplayFor(modelItem => item.Id_UsuarioC)" />
                     <input type="hidden" value="@Html.DisplayFor(modelItem => item.Id_CursoC)" />
                 </td>

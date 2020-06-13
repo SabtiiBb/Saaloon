@@ -8,9 +8,8 @@
     <h2>
         <img src="~/Content/img/desk-classroom-pngrepo-com.png" height="100em"/>  Mis Cursos</h2>
 </div>
-<p class="btn btn-primary" style="color:white; text-decoration:none;">
-    @Html.ActionLink("Crear Nuevo Curso", "CrearCurso")
-</p>
+<a href="@Url.Action("CrearCurso", "Docente")" class="btn btn-primary">Crear Nuevo Curso</a>
+
         @foreach (var item in Model)
         {
             <div class="grid-container-docente-curso">
