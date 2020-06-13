@@ -75,17 +75,6 @@
                     </div>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="col-auto">
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-chalkboard-teacher"></i></div>
-                        </div>
-                        @Html.DropDownListFor(x => x.idDocente, (IEnumerable<SelectListItem>)ViewBag.docente, new { @class = "form-control", placeholder = "Docente" })
-                        @Html.ValidationMessageFor(model => model.idDocente, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
 
             @Html.HiddenFor(model => model.idTemario)
             @Html.HiddenFor(model => model.idDocente)
