@@ -57,7 +57,7 @@ namespace Saaloon.Controllers
         [HttpPost]
         public ActionResult Perfil(FormCollection e, PerfilVM model)
         {
-            int idUser = int.Parse(Session["IdUsuario"].ToString());
+            int idUser = int.Parse(Session["idUsuario"].ToString());
 
             using (var dbContext = new DBPortalEduDataContext())
             {
@@ -96,8 +96,8 @@ namespace Saaloon.Controllers
                     Cursos curso = (from db in dbContext.Cursos where db.IdCurso == idCurso select db).Single();
                     List<Temario> temariodelcurso = (from db in dbContext.Temario where db.IdCurso == curso.IdCurso select db).ToList();
                     Docentes docente = (from db in dbContext.Docentes where db.IdDocente == curso.idDocente select db).Single();
+                    int CursoComprado = (from db in dbContext.compras where db.idCursoComprado == idCurso && db.IdUsuario == Convert.ToInt32(Sess.getSession("idUsuario")) select db).Count();
                     int CursoListaDeseo = (from db in dbContext.Carrito where db.Id_UsuarioC == Convert.ToInt32(Sess.getSession("idUsuario")) && db.Id_CursoC == curso.IdCurso select db).Count();
-                    int CursoComprado = (from db in dbContext.compras where db.idCursoComprado == curso.IdCurso && db.IdUsuario == Convert.ToInt32(Sess.getSession("idUsuario")) select db).Count();
                     //ViewBag.LoCompro = CursoComprado > 0 ? true : false;
 
                     objCurso.Id_CursoC = CursoComprado > 0 ? 2 : CursoListaDeseo > 0 ? 1 : 0;
@@ -253,8 +253,8 @@ namespace Saaloon.Controllers
                     Card.mestc = Convert.ToInt32(MyModel.Mestc);
                     Card.aniotc = Convert.ToInt32(MyModel.Añotc);
                     Card.IdUsuariot = Convert.ToInt32(Sess.getSession("idUsuario"));
-                    //dbContext.Tarjeta.InsertOnSubmit(Card);
-                    //dbContext.SubmitChanges();
+                    dbContext.Tarjeta.InsertOnSubmit(Card);
+                    dbContext.SubmitChanges();
 
                     var List = (from db in dbContext.Tarjeta where db.IdUsuariot == Card.IdUsuariot select db).ToList();
                     var LastFinded = List.LastOrDefault();
@@ -268,10 +268,34 @@ namespace Saaloon.Controllers
                     NuevaCompra.idCursoComprado = Curso.IdCurso;
                     dbContext.compras.InsertOnSubmit(NuevaCompra);
                     dbContext.SubmitChanges();
+
+                    Carrito EliminaListaDeseo = (from db in dbContext.Carrito where db.Id_CursoC == NuevaCompra.idCursoComprado select db).Single();
+                    dbContext.Carrito.DeleteOnSubmit(EliminaListaDeseo);
+                    dbContext.SubmitChanges();
                 }
             }
             catch { }
             return RedirectToAction("ListCarrito", "Principal");
+        }
+
+        public ActionResult MisCompras()
+        {
+            List<compras> ListadoComprado = new List<compras>();
+            int x = 0;
+            try
+            {
+                using (var dbContext = new DBPortalEduDataContext())
+                {
+                    ListadoComprado = (from db in dbContext.compras where db.IdUsuario == Convert.ToInt32(Sess.getSession("idUsuario")) select db).ToList();
+                    x = ListadoComprado.Count();
+                }
+            }
+            catch { }
+            if(x != 0)
+            {
+                return View(ListadoComprado);
+            }
+            return View();
         }
 
     }

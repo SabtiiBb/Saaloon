@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Saaloon.Context.compras>
+
+@{
+    ViewBag.Title = "MisCompras";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+<h2>MisCompras</h2>
+
+@if (Model == null)
+{
+    <br />
+    <center>
+        <h2>
+            <b>Aun no hay comprar registradas :(</b>
+            <img src="~/Content/img/FeelingBlue-amico.png" width="50%" />
+        </h2>
+        <br />
+    </center>
+}
+else
+{
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.valorcompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idtarjetac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idCursoComprado)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.valorcompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idtarjetac)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idCursoComprado)
+                </td>
+            </tr>
+        }
+
+    </table>
+}

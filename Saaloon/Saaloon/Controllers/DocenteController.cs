@@ -176,5 +176,54 @@ namespace Saaloon.Controllers
 
             return View(objCurso);
         }
+
+        [HttpGet]
+        public ActionResult EditarCurso(int idCurso)
+        {
+            EditarMiCursoVM MyModel= new EditarMiCursoVM();
+
+            try
+            {
+                using (var dbContext = new DBPortalEduDataContext())
+                {
+                    Cursos Curs = (from dbD in dbContext.Cursos where dbD.IdCurso == idCurso select dbD).Single();
+                    List<Temario> temario = (from dbD in dbContext.Temario where dbD.IdCurso == idCurso select dbD).ToList();
+                    Docentes doc = (from dbD in dbContext.Docentes where dbD.IdDocente == Curs.idDocente select dbD).Single();
+
+                    MyModel.IdCurso = idCurso;
+                    MyModel.Nombre = Curs.Nombre;
+                    MyModel.Descripcion = Curs.Descripcion;
+                    MyModel.Costo = Convert.ToDecimal(Curs.Costo);
+                    MyModel.idDocente = Convert.ToInt32(Curs.idDocente);
+                    MyModel.Recursos = Curs.Recursos;
+                    MyModel.NombreDocente = doc.apellido + ", " + doc.nombre;
+                    MyModel.Foto = Curs.Foto;
+                    MyModel.VideoIntro = Curs.Videointro;
+                    MyModel.temario = temario;
+                }
+            }
+            catch (Exception e) { }
+            return View(MyModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditarCurso(EditarMiCursoVM MyModel)
+        {
+            try
+            {
+                using (var dbContext = new DBPortalEduDataContext())
+                {
+                    Cursos Curs = (from dbD in dbContext.Cursos where dbD.IdCurso == MyModel.IdCurso select dbD).Single();
+                    Curs.Nombre = MyModel.Nombre;
+                    Curs.Descripcion = MyModel.Descripcion;
+                    Curs.Costo = Convert.ToDecimal(MyModel.Costo);
+                    Curs.idDocente = Convert.ToInt32(MyModel.idDocente);
+                    Curs.Recursos = MyModel.Recursos;
+                    Curs.Foto = MyModel.Foto;
+                }
+            }
+            catch (Exception e) { }
+            return RedirectToAction("CrearTemario", "Docente", MyModel);
+        }
     }
 }

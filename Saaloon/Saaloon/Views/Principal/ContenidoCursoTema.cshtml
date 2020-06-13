@@ -73,7 +73,7 @@
                     <td class="temna"><b>@Html.DisplayFor(modelItem => item.Tema)</b></td>
                     <td class="descripciontema">@Html.DisplayFor(modelItem => item.Descripcion)</td>
                 <td>
-                @if (ViewBag.LoCompro==true)
+                @if (Model.Id_CursoC == 2)
                 {
                     <a class="btn btn-warning" href="@Url.Action("ClaseTemaCurso", "Principal", new { idTema = item.IdTema })" >
                         <i class="fas fa-chevron-right"></i>
