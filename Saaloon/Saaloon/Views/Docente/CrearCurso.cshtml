@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_LayoutDocente.cshtml";
 }
 
-<h2>CrearCurso</h2>
-
 @using (Html.BeginForm("CrearCurso", "Docente", FormMethod.Post, new { @class = "crearalumno" }))
 {
     @Html.AntiForgeryToken()
@@ -94,7 +92,7 @@
             <br />
             <div class="claseboton">
                 <div>
-                    <div class="btn btn-danger">
+                    <div>
                         @Html.ActionLink("Regresar", "ListaCurso")
                     </div>
                     <input type="submit" value="Guardar y continuar" class="btn btn-primary" />
